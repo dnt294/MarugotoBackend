@@ -1,0 +1,21 @@
+<% unless current_page?(root_url) %>
+    <div class="ui borderless main menu">
+    <% else %>
+        <div class="ui borderless main menu top fixed hidden transition following-header">
+        <% end %>
+        <div class="ui text container">
+            <%= link_to "Home", root_path, class: "header item"  %>
+            <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
+            <%= link_to "Marugoto Words", '#', class: "item"  %>
+            <a href="#" class="ui right floated dropdown item" tabindex="0">
+                Khác
+        <i class="dropdown icon"></i>
+                <div class="menu transition hidden" tabindex="-1">
+                    <div class="item">Đăng nhập</div>
+                    <div class="item">Đăng kí</div>
+                    <div class="divider"></div>
+                    <div class="item">Setting</div>
+                </div>
+            </a>
+        </div>
+    </div>

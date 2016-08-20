@@ -1,3 +1,32 @@
-<h1>WebApp (and Backend) for a personal Japanese WordsBook.</h1>
-
-<h3>Marugoto Book.</h3>
+<%# Fullscreen Landing Image %>
+<div class="ui inverted vertical masthead center aligned transition segment">
+    <div class="ui container welcome-menu">
+        <div class="ui large secondary inverted pointing menu">
+            <%= link_to "Home", root_path, class: "active item"  %>
+            <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
+            <%= link_to "Marugoto Words", '#', class: "item"  %>
+        </div>
+    </div>
+    <div class="ui text container">
+        <h1 class="ui inverted header">
+            Japanese WordsBook
+        </h1>
+        <h2>Marugoto vs Kanji Look & Learn.</h2>
+    </div>
+</div>
+<%# Content %>
+<div class="ui vertical stripe setment">
+    <div class="ui equal width stackable internally celled grid">
+        <div class="center aligned row">
+            <div class="column">
+                <h3>"Marugoto"</h3>
+                <p>Words List from Marugoto Books.</p>
+                <p>(Update to A21)</p>
+            </div>
+            <div class="column">
+                <h3>"Kanji Look & Learn"</h3>
+                <p>512 Kanji</p>
+            </div>
+        </div>
+    </div>
+</div>
