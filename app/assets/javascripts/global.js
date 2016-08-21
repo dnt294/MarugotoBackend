@@ -1,14 +1,11 @@
 // Global JS.
 
-$(document).ready(function(){
-	// $('.image').visibility({
-	//        type: 'image',
- 	//        transition: 'vertical flip in',
- 	//        duration: 500
- 	//      });
+$(document).ready(function() {
 
-      // show dropdown on hover
-      $('.main.menu  .ui.dropdown').dropdown({
+    console.log('JavaScript Worked!');
+
+    // show dropdown on hover
+    $('.main.menu  .ui.dropdown').dropdown({
         on: 'hover'
-      });
+    });
 });
