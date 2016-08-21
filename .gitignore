@@ -21,6 +21,5 @@
 .byebug_history
 
 # Nodejs Modules
-/node_modules
-/tmp
-/public
+/node_modules/*
+/public/*
