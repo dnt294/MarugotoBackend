@@ -1,0 +1,18 @@
+<table class="ui celled padded striped table">
+    <thead>
+        <tr>
+            <th>Kanji</th>
+            <th>Meaning</th>
+            <th>Lesson</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @kanjis.each do |kanji| %>
+            <tr>
+                <td><%= link_to kanji.kanji, kanji, remote: true %></td>
+                <td><%= kanji.meaning %></td>
+                <td><%= kanji.lesson %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,20 +1,18 @@
-<div class="ui container">
-    <p id="notice"><%= notice %></p>
-    <h1>512 Kanji</h1>
-    <%= link_to 'New Kanji', new_kanji_path %>
-    <table class="ui celled padded striped table">
-        <thead>
-            <tr>
-                <th>Kanji</th>
-                <th>Meaning</th>
-                <th>Lesson</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @kanjis.each do |kanji| %>
-                <%= render 'kanji_short', kanji: kanji %>
-            <% end %>
-        </tbody>
-    </table>
-    <br>
+<div class="ui grid container">
+    <div class="nine wide column">
+        <p id="notice"><%= notice %></p>
+        <%= link_to 'New Kanji', new_kanji_path,  class: "ui blue basic button" %>
+        <%= form_tag search_kanjis_by_lesson_path, method: :get, remote: true do |f| %>
+            <%= text_field_tag :lesson %>
+            <%= submit_tag "Lesson" %>
+        <% end %>
+        <div id="kanji-list">
+            <%= render 'index' %>
+        </div>
+        <br>
+    </div>
+    <div class="six width column">
+        <div id="kanji-detail">
+        </div>
+    </div>
 </div>

@@ -1,0 +1,1 @@
+$("#kanji-list").html("<%= escape_javascript(render 'search_by_lesson') %>")
