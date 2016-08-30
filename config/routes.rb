@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-
-  resources :lessons
-  resources :verb_forms
-  resources :new_words
     root 'home#welcome'
+
+    resources :examples
+    resources :lessons
+    resources :verb_forms
+    resources :new_words
 
     resources :kanjis
 
