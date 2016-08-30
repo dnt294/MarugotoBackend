@@ -6,7 +6,9 @@ class CreateNewWords < ActiveRecord::Migration[5.0]
             t.string :meaning
             t.text :note
             t.string :type
-            t.decimal :lesson
+
+            t.references :multiformable, polymorphic: true
+            t.references :lesson, index: true
 
             t.timestamps
         end

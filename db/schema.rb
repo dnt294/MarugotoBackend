@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830031052) do
+ActiveRecord::Schema.define(version: 20160830173908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,15 @@ ActiveRecord::Schema.define(version: 20160830031052) do
     t.string   "image"
     t.boolean  "kanji_part"
     t.text     "note"
-    t.decimal  "lesson"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_kanjis_on_lesson_id", using: :btree
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string   "book"
+    t.string   "lesson"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,9 +55,21 @@ ActiveRecord::Schema.define(version: 20160830031052) do
     t.string   "meaning"
     t.text     "note"
     t.string   "type"
-    t.decimal  "lesson"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "multiformable_type"
+    t.integer  "multiformable_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["lesson_id"], name: "index_new_words_on_lesson_id", using: :btree
+    t.index ["multiformable_type", "multiformable_id"], name: "index_new_words_on_multiformable_type_and_multiformable_id", using: :btree
+  end
+
+  create_table "verb_forms", force: :cascade do |t|
+    t.string   "dictionary_form"
+    t.string   "nai_form"
+    t.string   "te_form"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

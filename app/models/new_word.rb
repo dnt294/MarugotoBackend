@@ -1,5 +1,7 @@
 class NewWord < ApplicationRecord
 
+    has_many :example, as: :examplable
+
     scope :adjs, -> { where(type: 'Adj') }
     scope :generic_words, -> {where( type: 'GenericWord') }
     scope :nouns, -> { where(type: 'Noun') }

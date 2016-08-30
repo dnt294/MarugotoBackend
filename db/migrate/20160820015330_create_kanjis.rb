@@ -9,7 +9,8 @@ class CreateKanjis < ActiveRecord::Migration[5.0]
             t.string :image
             t.boolean :kanji_part
             t.text :note
-            t.decimal :lesson
+
+            t.references :lesson, index: true
 
             t.timestamps
         end
