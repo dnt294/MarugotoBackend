@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :new_words
     root 'home#welcome'
 
     resources :kanjis

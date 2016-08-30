@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>New Words</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Kanji version</th>
+      <th>Meaning</th>
+      <th>Note</th>
+      <th>Lesson</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @new_words.each do |new_word| %>
+      <tr>
+        <td><%= new_word.word %></td>
+        <td><%= new_word.kanji_version %></td>
+        <td><%= new_word.meaning %></td>
+        <td><%= new_word.note %></td>
+        <td><%= new_word.lesson %></td>
+        <td><%= link_to 'Show', new_word %></td>
+        <td><%= link_to 'Edit', edit_new_word_path(new_word) %></td>
+        <td><%= link_to 'Destroy', new_word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New New Word', new_new_word_path %>

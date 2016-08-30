@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @new_word.word %>
+</p>
+
+<p>
+  <strong>Kanji version:</strong>
+  <%= @new_word.kanji_version %>
+</p>
+
+<p>
+  <strong>Meaning:</strong>
+  <%= @new_word.meaning %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @new_word.note %>
+</p>
+
+<p>
+  <strong>Lesson:</strong>
+  <%= @new_word.lesson %>
+</p>
+
+<%= link_to 'Edit', edit_new_word_path(@new_word) %> |
+<%= link_to 'Back', new_words_path %>

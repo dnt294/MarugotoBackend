@@ -1,1 +1,3 @@
-$("#kanji-list").html("<%= escape_javascript(render 'search_by_lesson') %>")
+function filter_by_lesson() {
+    $("#form_filter_lesson").submit();
+}

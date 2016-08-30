@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820015330) do
+ActiveRecord::Schema.define(version: 20160830031052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "examples", force: :cascade do |t|
+    t.string   "sentences"
+    t.string   "kanji_version"
+    t.string   "meaning"
+    t.text     "note"
+    t.string   "examplable_type"
+    t.integer  "examplable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["examplable_type", "examplable_id"], name: "index_examples_on_examplable_type_and_examplable_id", using: :btree
+  end
 
   create_table "kanjis", force: :cascade do |t|
     t.string   "kanji"
@@ -23,9 +35,21 @@ ActiveRecord::Schema.define(version: 20160820015330) do
     t.string   "hint"
     t.string   "image"
     t.boolean  "kanji_part"
+    t.text     "note"
     t.decimal  "lesson"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "new_words", force: :cascade do |t|
+    t.string   "word"
+    t.string   "kanji_version"
+    t.string   "meaning"
+    t.text     "note"
+    t.string   "type"
+    t.decimal  "lesson"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
