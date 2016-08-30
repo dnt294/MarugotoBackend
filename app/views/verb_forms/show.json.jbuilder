@@ -1,0 +1,1 @@
+json.partial! "verb_forms/verb_form", verb_form: @verb_form

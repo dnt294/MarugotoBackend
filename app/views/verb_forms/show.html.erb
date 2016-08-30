@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dictionary form:</strong>
+  <%= @verb_form.dictionary_form %>
+</p>
+
+<p>
+  <strong>Nai form:</strong>
+  <%= @verb_form.nai_form %>
+</p>
+
+<p>
+  <strong>Te form:</strong>
+  <%= @verb_form.te_form %>
+</p>
+
+<%= link_to 'Edit', edit_verb_form_path(@verb_form) %> |
+<%= link_to 'Back', verb_forms_path %>

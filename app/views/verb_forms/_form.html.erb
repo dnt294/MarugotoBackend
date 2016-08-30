@@ -1,0 +1,32 @@
+<%= form_for(verb_form) do |f| %>
+  <% if verb_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(verb_form.errors.count, "error") %> prohibited this verb_form from being saved:</h2>
+
+      <ul>
+      <% verb_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dictionary_form %>
+    <%= f.text_field :dictionary_form %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nai_form %>
+    <%= f.text_field :nai_form %>
+  </div>
+
+  <div class="field">
+    <%= f.label :te_form %>
+    <%= f.text_field :te_form %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
