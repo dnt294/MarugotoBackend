@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Example, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+
+    context 'model validations' do
+
+    end
+
+    context 'model associations' do
+        it { should belong_to :examplable }
+    end
 end

@@ -7,7 +7,6 @@ class CreateNewWords < ActiveRecord::Migration[5.0]
             t.text :note
             t.string :type
 
-            t.references :multiformable, polymorphic: true
             t.references :lesson, index: true
 
             t.timestamps

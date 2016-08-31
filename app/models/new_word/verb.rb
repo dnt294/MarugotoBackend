@@ -1,5 +1,5 @@
 class Verb < NewWord
 
-    belongs_to :multiformable, polymorphic: true
+    has_many :verb_forms
 
 end

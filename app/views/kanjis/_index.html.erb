@@ -11,7 +11,7 @@
             <tr>
                 <td><%= link_to kanji.kanji, kanji, remote: true %></td>
                 <td><%= kanji.meaning %></td>
-                <td><%= kanji.lesson %></td>
+                <td><%= kanji.lesson.select_label %></td>
             </tr>
         <% end %>
     </tbody>

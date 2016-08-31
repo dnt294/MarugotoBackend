@@ -1,21 +1,21 @@
-<% unless current_page?(root_url) %>
-    <div class="ui borderless main menu">
-    <% else %>
-        <div class="ui borderless main menu top fixed hidden transition following-header">
-        <% end %>
-        <div class="ui text container">
-            <%= link_to "Home", root_path, class: "header item"  %>
-            <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
-            <%= link_to "Marugoto Words", '#', class: "item"  %>
-            <a href="#" class="ui right floated dropdown item" tabindex="0">
-                Khác
-        <i class="dropdown icon"></i>
-                <div class="menu transition hidden" tabindex="-1">
-                    <div class="item">Đăng nhập</div>
-                    <div class="item">Đăng kí</div>
-                    <div class="divider"></div>
-                    <div class="item">Setting</div>
-                </div>
-            </a>
-        </div>
+<div class="ui borderless menu 
+    <%= 'top fixed hidden transition following-header' if current_page?(root_url) %> 
+    ">
+    <div class="left menu">
+        <%= link_to "Home", root_path, class: "header item"  %>
+        <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
+        <%= link_to "Marugoto Words", '#', class: "item"  %>
     </div>
+    <div class="right menu">
+        <% if current_page?(kanjis_url) %>
+            <div class="item">
+                <%= link_to 'New Kanji', new_kanji_path, remote: true, class: "ui primary basic button" %>
+            </div>
+            <div class="item">
+                <%= form_tag search_kanjis_by_lesson_path(lesson: params[:lesson]), method: :get, remote: true, id: "form_filter_lesson", class: "ui tiny form" do %>
+                    <%= select_tag :lesson, options_for_select(@lessons), include_blank: true, class: "ui ", onchange: "filter_by_lesson()" %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,21 +1,12 @@
 <div class="ui">
-    <div class="ui vertical segment grid">
-        <%= link_to 'New Kanji', new_kanji_path,
-              class: "ui blue basic button" %>
-        <%= form_tag search_kanjis_by_lesson_path(lesson: params[:lesson]), method: :get, remote: true, id: "form_filter_lesson",
-            class: "ui form" do %>
-            <%= select_tag :lesson, options_for_select(@lessons), include_blank: true, class: "ui fluid search selection dropdown", onchange: "filter_by_lesson()" %>
-        <% end %>
-        <br>
-    </div>
     <div class=" ui vertical segment grid">
-        <div class="nine wide column">
+        <div class="eight wide column">
             <div id="kanji-list">
                 <%= render 'index' %>
             </div>
         </div>
-        <div class="six width column">
-            <div id="kanji-detail">
+        <div class="eight wide column">
+            <div id="right-half-panel">
             </div>
         </div>
     </div>

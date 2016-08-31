@@ -55,21 +55,20 @@ ActiveRecord::Schema.define(version: 20160830173908) do
     t.string   "meaning"
     t.text     "note"
     t.string   "type"
-    t.string   "multiformable_type"
-    t.integer  "multiformable_id"
     t.integer  "lesson_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["lesson_id"], name: "index_new_words_on_lesson_id", using: :btree
-    t.index ["multiformable_type", "multiformable_id"], name: "index_new_words_on_multiformable_type_and_multiformable_id", using: :btree
   end
 
   create_table "verb_forms", force: :cascade do |t|
     t.string   "dictionary_form"
     t.string   "nai_form"
     t.string   "te_form"
+    t.integer  "new_word_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["new_word_id"], name: "index_verb_forms_on_new_word_id", using: :btree
   end
 
 end

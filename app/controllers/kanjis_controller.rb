@@ -71,6 +71,6 @@ class KanjisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kanji_params
-        params.require(:kanji).permit(:kanji, :meaning, :onyomi, :kunyomi, :hint, :image, :kanji_part, :lesson)
+        params.require(:kanji).permit(:kanji, :meaning, :onyomi, :kunyomi, :hint, :image, :kanji_part, :lesson_id)
     end
 end

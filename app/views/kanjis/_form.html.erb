@@ -1,47 +1,16 @@
-<%= form_for kanji, remote: true do |f| %>
-    <% if kanji.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(kanji.errors.count, "error") %> prohibited this kanji from being saved:</h2>
-            <ul>
-                <% kanji.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
+<div class="content">
+    <%= simple_form_for kanji, remote: true do |f| %>
+        <div class="error_section">
         </div>
+        <%= f.input :kanji %>
+        <%= f.input :meaning, label: 'Nghĩa' %>
+        <div class="fields">
+            <%= f.input :onyomi %>
+            <%= f.input :kunyomi %>
+        </div>
+        <%= f.input :hint %>
+        <%= f.input :kanji_part, as: :boolean, default: false %>
+        <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.where(book: 'Kanji') %>
+        <%= f.button :submit %>
     <% end %>
-    <div class="field">
-        <%= f.label :kanji %>
-        <%= f.text_field :kanji %>
-    </div>
-    <div class="field">
-        <%= f.label :meaning %>
-        <%= f.text_field :meaning %>
-    </div>
-    <div class="field">
-        <%= f.label :onyomi %>
-        <%= f.text_field :onyomi %>
-    </div>
-    <div class="field">
-        <%= f.label :kunyomi %>
-        <%= f.text_field :kunyomi %>
-    </div>
-    <div class="field">
-        <%= f.label :hint %>
-        <%= f.text_field :hint %>
-    </div>
-    <div class="field">
-        <%= f.label :image %>
-        <%= f.text_field :image %>
-    </div>
-    <div class="field">
-        <%= f.label :kanji_part %>
-        <%= f.check_box :kanji_part %>
-    </div>
-    <div class="field">
-        <%= f.label :lesson %>
-        <%= f.text_field :lesson %>
-    </div>
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-<% end %>
+</div>

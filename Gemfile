@@ -31,6 +31,9 @@ group :development, :test do
     gem 'byebug', platform: :mri
     gem 'rspec-rails', '~> 3.5'
     gem 'factory_girl_rails'
+    gem 'rails-controller-testing'
+    gem 'faker'
+    gem 'shoulda-matchers'
 end
 
 group :production, :development do
