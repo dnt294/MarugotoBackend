@@ -7,9 +7,10 @@
         <div class="fields">
             <%= f.input :onyomi %>
             <%= f.input :kunyomi %>
+            <%= f.input :strock_count %>
         </div>
         <%= f.input :hint %>
-        <%= f.input :kanji_part, as: :boolean, default: false %>
+        <%= f.input :radical, wrapper: :ui_checkbox %>
         <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.where(book: 'Kanji') %>
         <%= f.button :submit %>
     <% end %>

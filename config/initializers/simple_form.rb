@@ -57,31 +57,28 @@ SimpleForm.setup do |config|
 
     end
 
-    config.wrappers :semantic_checkbox, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui checkbox' do |input|
-            input.use :input
-            input.wrapper tag: 'label' do |box| end
+            input.use :label_input
+            input.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
         end
-        b.use :label
     end
 
-    config.wrappers :semantic_checkbox_slider, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_slider_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui slider checkbox' do |input|
-            input.use :input
-            input.wrapper tag: 'label' do |slide| end
+            input.use :label_input
+            input.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
         end
-        b.use :label
     end
 
-    config.wrappers :semantic_checkbox_toggle, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_toggle_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui toggle checkbox' do |input|
-            input.use :input
-            input.wrapper tag: 'label' do |slide| end
+            input.use :label_input
+            input.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
         end
-        b.use :label
     end
 
     # The default wrapper to be used by the FormBuilder.
@@ -91,7 +88,7 @@ SimpleForm.setup do |config|
     # Defaults to :nested for bootstrap config.
     #   inline: input + label
     #   nested: label > input
-    config.boolean_style = :nested
+    config.boolean_style = :inline
 
     # Default class for buttons
     config.button_class = 'ui blue submit button'

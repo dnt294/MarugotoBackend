@@ -23,14 +23,15 @@ class KanjisController < ApplicationController
     # POST /kanjis
     def create
         @kanji = Kanji.new(kanji_params)
-
+        cache_lesson_id = @kanji.lesson_id
         respond_to do |format|
             if @kanji.save
-                format.html { redirect_to @kanji, notice: 'Kanji was successfully created.' }
-                format.json { render :show, status: :created, location: @kanji }
+                format.js {
+                    @kanjis = Kanji.of_book(@kanji.lesson_id)
+                    @kanji = Kanji.new(lesson_id: cache_lesson_id)
+                }
             else
-                format.html { render :new }
-                format.json { render json: @kanji.errors, status: :unprocessable_entity }
+                format.js
             end
         end
     end
@@ -60,7 +61,7 @@ class KanjisController < ApplicationController
     end
 
     def search_by_lesson
-        @kanjis = Kanji.where(lesson: params[:lesson])
+        @kanjis = Kanji.of_book(params[:lesson])
     end
 
     private
@@ -71,6 +72,6 @@ class KanjisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kanji_params
-        params.require(:kanji).permit(:kanji, :meaning, :onyomi, :kunyomi, :hint, :image, :kanji_part, :lesson_id)
+        params.require(:kanji).permit(:kanji, :meaning, :onyomi, :kunyomi, :stroke_count, :hint, :image, :radical, :lesson_id)
     end
 end
