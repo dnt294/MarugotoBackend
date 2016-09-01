@@ -1,6 +1,8 @@
 class Kanji < ApplicationRecord
 
+    default_scope { order('created_at').order('lesson_id')}
     scope :of_book, ->(lesson_id) { where("lesson_id = ?", lesson_id) if lesson_id.present? }
+
 
     belongs_to :lesson
     has_many :examples, as: :examplable

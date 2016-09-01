@@ -1,1 +1,7 @@
-<%= render 'save' %>
+$('.error_section').empty()
+<% if @kanji.errors.any? %>
+    $('.error_section').append("<%= escape_javascript render(partial: 'shared/error_form', locals: {item: @kanji}) %>")
+<% else %>
+    $("#kanji-list").html("<%= escape_javascript(render 'index') %>")
+    $('#right-half-panel').empty().append('<%= escape_javascript(render 'show') %>')
+<% end %>

@@ -1,12 +1,5 @@
-<p id="notice"><%= notice %></p>
-<p>
-    <strong>Kanji:</strong>
-    <%= @kanji.kanji %>
-</p>
-<p>
-    <strong>Meaning:</strong>
-    <%= @kanji.meaning %>
-</p>
+<h2> Kanji:  <%= @kanji.kanji %> </h2>
+<h2> Meaning:  <%= @kanji.meaning %> </h2>
 <p>
     <strong>Onyomi:</strong>
     <%= @kanji.onyomi %>
@@ -24,11 +17,16 @@
     <%= @kanji.image %>
 </p>
 <p>
+    <strong>Stroke Count:</strong>
+    <%= @kanji.stroke_count %>
+</p>
+<p>
     <strong>Kanji part:</strong>
     <%= @kanji.radical %>
 </p>
 <p>
     <strong>Lesson:</strong>
-    <%= @kanji.lesson %>
+    <%= @kanji.lesson.lesson %>
 </p>
-<%= link_to 'Edit', edit_kanji_path(@kanji), remote: true %> |
+<%= link_to 'Edit', edit_kanji_path(@kanji), remote: true, class: 'ui primary button' %>
+<%= link_to 'Delete', @kanji, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'}%>

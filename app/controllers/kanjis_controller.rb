@@ -39,13 +39,15 @@ class KanjisController < ApplicationController
     # PATCH/PUT /kanjis/1
     # PATCH/PUT /kanjis/1.json
     def update
+        cache_kanji_id = params[:id]
         respond_to do |format|
             if @kanji.update(kanji_params)
-                format.html { redirect_to @kanji, notice: 'Kanji was successfully updated.' }
-                format.json { render :show, status: :ok, location: @kanji }
+                format.js {
+                    @kanjis = Kanji.of_book(@kanji.lesson_id)
+                    @kanji = Kanji.find(params[:id])
+                }
             else
-                format.html { render :edit }
-                format.json { render json: @kanji.errors, status: :unprocessable_entity }
+                format.js
             end
         end
     end

@@ -1,17 +1,17 @@
-<table class="ui celled padded striped table">
+<table class="ui celled padded striped unstackable table">
     <thead>
         <tr>
-            <th>Kanji</th>
-            <th>Meaning</th>
-            <th>Lesson</th>
+            <th class="two wide center aligned">Lesson</th>
+            <th class="two wide center aligned">Kanji</th>
+            <th class="twelve wide">Meaning</th>
         </tr>
     </thead>
     <tbody>
         <% @kanjis.each do |kanji| %>
             <tr>
-                <td><%= link_to kanji.kanji, kanji, remote: true %></td>
+                <td class="center aligned"><%= kanji.lesson.lesson %></td>
+                <td class="center aligned"><%= link_to kanji.kanji, kanji, remote: true %></td>
                 <td><%= kanji.meaning %></td>
-                <td><%= kanji.lesson.select_label %></td>
             </tr>
         <% end %>
     </tbody>
