@@ -39,7 +39,6 @@ class KanjisController < ApplicationController
     # PATCH/PUT /kanjis/1
     # PATCH/PUT /kanjis/1.json
     def update
-        cache_kanji_id = params[:id]
         respond_to do |format|
             if @kanji.update(kanji_params)
                 format.js {
@@ -62,7 +61,7 @@ class KanjisController < ApplicationController
         end
     end
 
-    def search_by_lesson
+    def sort
         @kanjis = Kanji.of_book(params[:lesson])
     end
 

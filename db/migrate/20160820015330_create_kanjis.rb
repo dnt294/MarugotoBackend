@@ -5,7 +5,7 @@ class CreateKanjis < ActiveRecord::Migration[5.0]
             t.string :meaning
             t.string :onyomi
             t.string :kunyomi
-            t.decimal :stroke_count
+            t.integer :stroke_count
             t.string :hint
             t.string :image
             t.boolean :radical, default: false

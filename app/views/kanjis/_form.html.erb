@@ -1,17 +1,15 @@
-<div class="content">
-    <%= simple_form_for kanji, remote: true do |f| %>
-        <div class="error_section">
-        </div>
-        <%= f.input :kanji %>
-        <%= f.input :meaning, label: 'Nghĩa' %>
-        <div class="fields">
-            <%= f.input :onyomi %>
-            <%= f.input :kunyomi %>
-            <%= f.input :stroke_count %>
-        </div>
-        <%= f.input :hint %>
-        <%= f.input :radical, wrapper: :ui_checkbox %>
-        <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.where(book: 'Kanji') %>
-        <%= f.button :submit %>
-    <% end %>
-</div>
+<%= simple_form_for kanji, remote: true do |f| %>
+    <div class="error_section">
+    </div>
+    <%= f.input :kanji %>
+    <%= f.input :meaning, label: 'Nghĩa' %>
+    <div class="fields">
+        <%= f.input :onyomi %>
+        <%= f.input :kunyomi %>
+        <%= f.input :stroke_count %>
+    </div>
+    <%= f.input :hint %>
+    <%= f.input :radical, wrapper: :ui_checkbox %>
+    <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.kanji_books %>
+    <%= f.button :submit %>
+<% end %>

@@ -1,2 +1,0 @@
-class Noun < NewWord
-end

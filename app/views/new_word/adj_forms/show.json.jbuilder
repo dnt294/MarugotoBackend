@@ -1,0 +1,1 @@
+json.partial! "new_word_adj_forms/new_word_adj_form", new_word_adj_form: @new_word_adj_form

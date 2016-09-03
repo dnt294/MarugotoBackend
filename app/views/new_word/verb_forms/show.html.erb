@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Verb type:</strong>
+  <%= @new_word_verb_form.verb_type %>
+</p>
+
+<p>
+  <strong>Dictionary form:</strong>
+  <%= @new_word_verb_form.dictionary_form %>
+</p>
+
+<p>
+  <strong>Nai form:</strong>
+  <%= @new_word_verb_form.nai_form %>
+</p>
+
+<p>
+  <strong>Te form:</strong>
+  <%= @new_word_verb_form.te_form %>
+</p>
+
+<%= link_to 'Edit', edit_new_word_verb_form_path(@new_word_verb_form) %> |
+<%= link_to 'Back', new_word_verb_forms_path %>

@@ -1,0 +1,7 @@
+$('.error_section').empty()
+<% if @new_word.errors.any? %>
+    $('.error_section').append("<%= escape_javascript render(partial: 'shared/error_form', locals: {item: @new_word}) %>")
+<% else %>
+    $("#new-word-list").html("<%= escape_javascript(render 'index') %>")
+    $('#right-half-panel').empty().append('<%= escape_javascript(render 'show') %>')
+<% end %>

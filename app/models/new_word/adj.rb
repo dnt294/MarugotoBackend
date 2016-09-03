@@ -1,2 +1,0 @@
-class Adj < NewWord
-end

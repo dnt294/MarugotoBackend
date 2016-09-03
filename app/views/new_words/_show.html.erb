@@ -1,0 +1,31 @@
+<h2> Word: <%= @new_word.word %> </h2>
+<h2> Kanji Version: <%= @new_word.kanji_version %> </h2>
+<p>
+    <strong>Meaning:</strong>
+    <%= @new_word.meaning %>
+</p>
+<p>
+    <strong>Note:</strong>
+    <%= @new_word.note %>
+</p>
+<p>
+    <strong>Word Type:</strong>
+    <%= @new_word.word_type %>
+</p>
+<p>
+    <strong>Lesson:</strong>
+    <%= @new_word.lesson.lesson %>
+</p>
+<% if @new_word.verb_form.present? %>
+    <p>
+        <strong>Verb type:</strong>
+        <%= @new_word.verb_form.verb_type %>
+    </p>
+<% elsif @new_word.adj_form.present? %>
+    <p>
+        <strong>Adj type:</strong>
+        <%= @new_word.adj_form.adj_type %>
+    </p>
+<% end %>
+<%= link_to 'Edit', edit_new_word_path(@new_word), remote: true, class: 'ui primary button' %>
+<%= link_to 'Delete', @new_word, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'} %>

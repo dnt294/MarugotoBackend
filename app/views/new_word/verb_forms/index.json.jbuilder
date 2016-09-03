@@ -1,0 +1,1 @@
+json.array! @new_word_verb_forms, partial: 'new_word_verb_forms/new_word_verb_form', as: :new_word_verb_form

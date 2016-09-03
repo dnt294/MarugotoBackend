@@ -1,3 +1,7 @@
 class NewWord::VerbForm < ApplicationRecord
-    belongs_to :verb
+
+    self.table_name = 'verb_forms'
+
+    belongs_to :new_word
+
 end

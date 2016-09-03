@@ -1,0 +1,20 @@
+<table class="ui celled padded striped unstackable table">
+    <thead>
+        <tr>
+            <th class="one wide center aligned">Lesson</th>
+            <th class="four wide center aligned">Word</th>
+            <th class="four wide center aligned">Kanji Version</th>
+            <th class="five wide">Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @new_words.each do |new_word| %>
+            <tr>
+                <td class="center aligned"><%= new_word.lesson.lesson %></td>
+                <td class="center aligned"><%= link_to new_word.word, new_word, remote: true %></td>
+                <td><%= new_word.kanji_version %></td>
+                <td><%= new_word.meaning %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

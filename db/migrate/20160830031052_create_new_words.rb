@@ -5,7 +5,7 @@ class CreateNewWords < ActiveRecord::Migration[5.0]
             t.string :kanji_version
             t.string :meaning
             t.text :note
-            t.string :type
+            t.string :word_type, null: false, default: 'GenericWord'
 
             t.references :lesson, index: true
 

@@ -1,0 +1,2 @@
+module NewWord::AdjFormsHelper
+end

@@ -1,0 +1,8 @@
+<div class="item">
+    <%= link_to 'New Word', new_new_word_path, remote: true, class: "ui primary basic button" %>
+</div>
+<div class="item">
+    <%= form_tag sort_new_words_path(lesson: params[:lesson]), method: :get, remote: true, id: "form_filter_lesson", class: "ui tiny form" do %>
+        <%= select_tag :lesson, options_from_collection_for_select(Lesson.marugoto_books, :id, :select_label), prompt: 'Chọn theo bài', class: "ui ", onchange: "filter_by_lesson()" %>
+    <% end %>
+</div>

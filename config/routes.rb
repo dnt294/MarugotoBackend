@@ -1,14 +1,29 @@
 Rails.application.routes.draw do
 
+  namespace :new_word do
+    resources :verb_forms
+  end
+  namespace :new_word do
+    resources :adj_forms
+  end
+  namespace :new_word do
+    end
+  namespace :new_word do
+    end
     root 'home#welcome'
 
     resources :examples
     resources :lessons
-    resources :verb_forms
-    resources :new_words
+      resources :new_words do
+        collection do
+            get 'sort'
+        end
+    end
 
-    resources :kanjis
-
-    get '/search_kanjis_by_lesson', to: 'kanjis#search_by_lesson', as: :search_kanjis_by_lesson
+    resources :kanjis do
+        collection do
+            get 'sort'
+        end
+    end
 
 end

@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901080501) do
+ActiveRecord::Schema.define(version: 20160902190533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adj_forms", force: :cascade do |t|
+    t.integer  "adj_type"
+    t.integer  "new_word_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["new_word_id"], name: "index_adj_forms_on_new_word_id", using: :btree
+  end
 
   create_table "examples", force: :cascade do |t|
     t.string   "sentences"
@@ -39,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160901080501) do
     t.string   "meaning"
     t.string   "onyomi"
     t.string   "kunyomi"
-    t.decimal  "stroke_count"
+    t.integer  "stroke_count"
     t.string   "hint"
     t.string   "image"
     t.boolean  "radical",      default: false
@@ -52,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160901080501) do
 
   create_table "lessons", force: :cascade do |t|
     t.string   "book"
-    t.string   "lesson"
+    t.integer  "lesson"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160901080501) do
     t.string   "kanji_version"
     t.string   "meaning"
     t.text     "note"
-    t.string   "type"
+    t.string   "word_type"
     t.integer  "lesson_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160901080501) do
   end
 
   create_table "verb_forms", force: :cascade do |t|
+    t.integer  "verb_type"
     t.string   "dictionary_form"
     t.string   "nai_form"
     t.string   "te_form"
