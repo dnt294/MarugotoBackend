@@ -6,7 +6,7 @@
     <%= f.input :note %>
     <%= f.input :word_type, collection: NewWord.types, input_html: { onchange: 'display_forms_tags()' } %>
     <%= f.association :lesson, label_method: :select_label, value_method: :id, collection: Lesson.marugoto_books %>
-    <div class="new-word verb-form">
+    <div class="hidden new-word verb-form">
         <%= f.simple_fields_for :verb_form do |v| %>
             <%= v.input :verb_type %>
             <%= v.input :dictionary_form %>
@@ -14,10 +14,20 @@
             <%= v.input :te_form %>
         <% end %>
     </div>
-    <div class="new-word adj-form">
+    <div class="hidden new-word adj-form">
         <%= f.simple_fields_for :adj_form do |a| %>
             <%= a.input :adj_type %>
         <% end %>
     </div>
+    <div class="ui horizontal divider">
+        Ví dụ
+    </div>
+    <div class="examples">
+        <%= f.simple_fields_for :examples do |example| %>
+            <%= render 'example_fields', f: example %>
+        <% end %>
+        <%= link_to_add_association 'Them VD', f, :examples %>
+    </div>
+    <div class="ui divider"></div>
     <%= f.button :submit %>
 <% end %>

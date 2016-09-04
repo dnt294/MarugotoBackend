@@ -17,6 +17,7 @@ class NewWord < ApplicationRecord
 
     accepts_nested_attributes_for :adj_form, allow_destroy: true
     accepts_nested_attributes_for :verb_form, allow_destroy: true
+    accepts_nested_attributes_for :examples, allow_destroy: true
 
     after_save :check_valid_forms
 
