@@ -4,4 +4,6 @@ class NewWord::VerbForm < ApplicationRecord
 
     belongs_to :new_word
 
+    validates :verb_type, presence: true
+    validates :verb_type, numericality: { only_integer: true }
 end

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160902190533) do
   enable_extension "plpgsql"
 
   create_table "adj_forms", force: :cascade do |t|
-    t.integer  "adj_type"
+    t.integer  "adj_type",    null: false
     t.integer  "new_word_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -70,18 +70,19 @@ ActiveRecord::Schema.define(version: 20160902190533) do
     t.string   "kanji_version"
     t.string   "meaning"
     t.text     "note"
-    t.string   "word_type"
+    t.string   "word_type",     default: "GenericWord", null: false
     t.integer  "lesson_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["lesson_id"], name: "index_new_words_on_lesson_id", using: :btree
   end
 
   create_table "verb_forms", force: :cascade do |t|
-    t.integer  "verb_type"
+    t.integer  "verb_type",       null: false
     t.string   "dictionary_form"
-    t.string   "nai_form"
     t.string   "te_form"
+    t.string   "ta_form"
+    t.string   "nai_form"
     t.integer  "new_word_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

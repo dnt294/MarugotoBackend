@@ -2,6 +2,6 @@
     <%= f.input :sentences %>
     <%= f.input :kanji_version %>
     <%= f.input :meaning %>
-    <%= f.input :note %>
+    <%= f.input :note, input_html: {rows: 2 } %>
     <%= link_to_remove_association 'Xóa VD', f %>
 </div>

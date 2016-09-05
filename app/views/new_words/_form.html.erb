@@ -1,22 +1,23 @@
 <%= simple_form_for init_forms(new_word), remote: true do |f| %>
     <div class="error_section"></div>
-    <%= f.input :word %>
-    <%= f.input :kanji_version %>
+    <div class="two fields">
+        <%= f.input :word %>
+        <%= f.input :kanji_version %>
+    </div>
     <%= f.input :meaning, label: 'Nghĩa' %>
-    <%= f.input :note %>
-    <%= f.input :word_type, collection: NewWord.types, input_html: { onchange: 'display_forms_tags()' } %>
-    <%= f.association :lesson, label_method: :select_label, value_method: :id, collection: Lesson.marugoto_books %>
+    <%= f.input :note, input_html: { rows: 2 } %>
+    <div class="two fields">
+        <%= f.input :word_type, collection: NewWord.types, input_html: { onchange: 'display_forms_tags()' } %>
+        <%= f.association :lesson, label_method: :select_label, value_method: :id, collection: Lesson.marugoto_books %>
+    </div>
     <div class="hidden new-word verb-form">
         <%= f.simple_fields_for :verb_form do |v| %>
-            <%= v.input :verb_type %>
-            <%= v.input :dictionary_form %>
-            <%= v.input :nai_form %>
-            <%= v.input :te_form %>
+            <%= render 'verb_form_fields', v: v %>
         <% end %>
     </div>
     <div class="hidden new-word adj-form">
         <%= f.simple_fields_for :adj_form do |a| %>
-            <%= a.input :adj_type %>
+            <%= render 'adj_form_fields', a: a %>
         <% end %>
     </div>
     <div class="ui horizontal divider">

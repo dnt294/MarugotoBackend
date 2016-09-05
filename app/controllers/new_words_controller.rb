@@ -76,6 +76,6 @@ class NewWordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def new_word_params
-        params.require(:new_word).permit(:word, :kanji_version, :meaning, :note, :lesson_id, :word_type, adj_form_attributes: [:adj_type], verb_form_attributes: [:verb_type, :dictionary_form, :nai_form, :te_form], examples_attributes: [:id, :_destroy, :sentences, :kanji_version, :meaning, :note])
+        params.require(:new_word).permit(:word, :kanji_version, :meaning, :note, :lesson_id, :word_type, adj_form_attributes: [:adj_type], verb_form_attributes: [:verb_type, :dictionary_form, :nai_form, :te_form, :ta_form], examples_attributes: [:id, :_destroy, :sentences, :kanji_version, :meaning, :note])
     end
 end
