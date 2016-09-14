@@ -63,6 +63,9 @@ class NewWordsController < ApplicationController
         end
     end
 
+    def sort
+        @new_words = NewWord.of_book(params[:lesson]).includes(:lesson)
+    end
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_new_word

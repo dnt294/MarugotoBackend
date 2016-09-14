@@ -62,7 +62,7 @@ class KanjisController < ApplicationController
     end
 
     def sort
-        @kanjis = Kanji.of_book(params[:lesson])
+        @kanjis = Kanji.of_book(params[:lesson]).includes(:lesson)
     end
 
     private
