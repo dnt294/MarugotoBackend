@@ -21,5 +21,12 @@
 <% elsif @new_word.adj_form.present? %>
     <%= render @new_word.adj_form %>
 <% end %>
+<div class="ui horizontal divider">
+    Ví dụ
+</div>
+<div class="ui divided items">
+    <%= render @new_word.examples %>
+</div>
+<div class="ui divider"></div>
 <%= link_to 'Edit', edit_new_word_path(@new_word), remote: true, class: 'ui primary button' %>
 <%= link_to 'Delete', @new_word, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'} %>
