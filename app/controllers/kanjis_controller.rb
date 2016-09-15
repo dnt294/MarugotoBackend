@@ -3,7 +3,7 @@ class KanjisController < ApplicationController
 
     # GET /kanjis
     def index
-        @kanjis = Kanji.all
+        @kanjis = Kanji.all.includes(:lesson)
         @lessons = [*1..32]
     end
 

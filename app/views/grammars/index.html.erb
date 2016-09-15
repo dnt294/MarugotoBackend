@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div class="ui container">
+    <table class="ui celled padded striped unstackable table">
+        <thead>
+            <tr>
+                <th class="two wide center aligned">Lesson</th>
+                <th class="six wide center aligned">Title</th>
+                <th class="six wide center aligned">Explanation</th>
+                <th colspan="2" class="two wide center aligned"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @grammars.each do |grammar| %>
+                <tr>
+                    <td><%= grammar.lesson.select_label %></td>
+                    <td><%= link_to grammar.title, grammar %></td>
+                    <td><%= grammar.explanation %></td>
+                    <td>
+                        <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>
+                            <i class="edit icon"></i>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= link_to grammar, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui circular icon button' do %>
+                            <i class="delete icon"></i>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

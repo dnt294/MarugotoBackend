@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902190533) do
+ActiveRecord::Schema.define(version: 20160915034335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20160902190533) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["examplable_type", "examplable_id"], name: "index_examples_on_examplable_type_and_examplable_id", using: :btree
+  end
+
+  create_table "grammars", force: :cascade do |t|
+    t.string   "title",       null: false
+    t.string   "explanation", null: false
+    t.text     "note"
+    t.integer  "lesson_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["lesson_id"], name: "index_grammars_on_lesson_id", using: :btree
   end
 
   create_table "kanji_radicals", force: :cascade do |t|
@@ -89,4 +99,5 @@ ActiveRecord::Schema.define(version: 20160902190533) do
     t.index ["new_word_id"], name: "index_verb_forms_on_new_word_id", using: :btree
   end
 
+  add_foreign_key "grammars", "lessons"
 end

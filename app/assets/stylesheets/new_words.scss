@@ -1,3 +1,9 @@
 // Place all the styles related to the NewWords controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui.table tr.adj,
+.ui.table td.adj {
+    background: #FDFF00 !important;
+    color: #E9DE15 !important;
+}

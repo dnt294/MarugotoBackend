@@ -1,32 +1,36 @@
-<h2> Word: <%= @new_word.word %> </h2>
-<h2> Kanji Version: <%= @new_word.kanji_version %> </h2>
-<p>
-    <strong>Meaning:</strong>
-    <%= @new_word.meaning %>
-</p>
-<p>
-    <strong>Note:</strong>
-    <%= @new_word.note %>
-</p>
-<p>
-    <strong>Word Type:</strong>
-    <%= @new_word.word_type %>
-</p>
-<p>
-    <strong>Lesson:</strong>
-    <%= @new_word.lesson.lesson %>
-</p>
-<% if @new_word.verb_form.present? %>
-    <%= render @new_word.verb_form %>
-<% elsif @new_word.adj_form.present? %>
-    <%= render @new_word.adj_form %>
+<div class="ui segment">
+    <h2> Word: <%= @new_word.word %> </h2>
+    <h2> Kanji Version: <%= @new_word.kanji_version %> </h2>
+    <p>
+        <strong>Meaning:</strong>
+        <%= @new_word.meaning %>
+    </p>
+    <p>
+        <strong>Note:</strong>
+        <%= @new_word.note %>
+    </p>
+    <p>
+        <strong>Word Type:</strong>
+        <%= @new_word.word_type %>
+    </p>
+    <p>
+        <strong>Lesson:</strong>
+        <%= @new_word.lesson.lesson %>
+    </p>
+    <% if @new_word.verb_form.present? %>
+        <%= render @new_word.verb_form %>
+    <% elsif @new_word.adj_form.present? %>
+        <%= render @new_word.adj_form %>
+    <% end %>
+</div>
+<% if @new_word.examples.any? %>
+    <div class="ui horizontal divider">
+        Ví dụ
+    </div>
+    <div class="ui divided items">
+        <%= render @new_word.examples %>
+    </div>
 <% end %>
-<div class="ui horizontal divider">
-    Ví dụ
-</div>
-<div class="ui divided items">
-    <%= render @new_word.examples %>
-</div>
 <div class="ui divider"></div>
 <%= link_to 'Edit', edit_new_word_path(@new_word), remote: true, class: 'ui primary button' %>
 <%= link_to 'Delete', @new_word, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'} %>

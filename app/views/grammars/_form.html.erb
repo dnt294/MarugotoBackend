@@ -1,0 +1,23 @@
+<%= simple_form_for(@grammar) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+        <%= f.input :title %>
+        <%= f.input :explanation %>
+        <%= f.input :note %>
+        <%= f.association :lesson, label_method: :select_label, value_method: :id, collection: Lesson.marugoto_books %>
+    </div>
+    <div class="ui horizontal divider">
+        Ví dụ
+    </div>
+    <div class="examples">
+        <%= f.simple_fields_for :examples do |example| %>
+            <%= render 'example_fields', f: example %>
+        <% end %>
+    </div>
+    <div class="ui divider"></div>
+    <div class="form-actions">
+        <%= link_to_add_association 'Thêm ví dụ', f, :examples, class: 'basic positive ui icon button' %>
+        <%= f.button :submit %>
+        <%= link_to 'Back', grammars_path, class: 'ui button negative' %>
+    </div>
+<% end %>

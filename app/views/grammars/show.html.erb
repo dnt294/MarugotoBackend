@@ -1,0 +1,32 @@
+<div class="ui container">
+    <p id="notice"><%= notice %></p>
+    <p>
+        <strong>Lesson:</strong>
+        <%= @grammar.lesson.select_label %>
+    </p>
+    <div class="ui divider"></div>
+    <h1>
+        <strong>Title:</strong>
+        <%= @grammar.title %>
+    </h1>
+    <h1>
+        <strong>Explanation:</strong>
+        <%= @grammar.explanation %>
+    </h1>
+    <p>
+        <strong>Note:</strong>
+        <%= @grammar.note %>
+    </p>
+    <div class="ui horizontal divider">
+        Ví dụ
+    </div>
+    <% @grammar.examples.each do |example| %>
+        <%= render partial: 'examples_list', locals: { example: example } %>
+    <% end %>
+    <div class="ui divider"></div>
+    <div class="ui buttons">
+        <%= link_to 'Edit', edit_grammar_path(@grammar), class: 'ui positive button' %>
+        <div class="or"></div>
+        <%= link_to 'Back', grammars_path, class: 'ui button' %>
+    </div>
+</div>

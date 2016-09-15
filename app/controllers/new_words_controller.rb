@@ -4,7 +4,7 @@ class NewWordsController < ApplicationController
     # GET /new_words
     # GET /new_words.json
     def index
-        @new_words = NewWord.all
+        @new_words = NewWord.all.includes(:lesson)
     end
 
     # GET /new_words/1
