@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915034335) do
+ActiveRecord::Schema.define(version: 20160916185907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,25 @@ ActiveRecord::Schema.define(version: 20160915034335) do
     t.index ["new_word_id"], name: "index_adj_forms_on_new_word_id", using: :btree
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  end
+
   create_table "examples", force: :cascade do |t|
-    t.string   "sentences"
+    t.string   "sentences",       null: false
     t.string   "kanji_version"
-    t.string   "meaning"
+    t.string   "meaning",         null: false
     t.text     "note"
     t.string   "examplable_type"
     t.integer  "examplable_id"
@@ -53,11 +68,11 @@ ActiveRecord::Schema.define(version: 20160915034335) do
   end
 
   create_table "kanjis", force: :cascade do |t|
-    t.string   "kanji"
-    t.string   "meaning"
+    t.string   "kanji",                        null: false
+    t.string   "meaning",                      null: false
     t.string   "onyomi"
     t.string   "kunyomi"
-    t.integer  "stroke_count"
+    t.integer  "stroke_count",                 null: false
     t.string   "hint"
     t.string   "image"
     t.boolean  "radical",      default: false
@@ -76,9 +91,9 @@ ActiveRecord::Schema.define(version: 20160915034335) do
   end
 
   create_table "new_words", force: :cascade do |t|
-    t.string   "word"
+    t.string   "word",                                  null: false
     t.string   "kanji_version"
-    t.string   "meaning"
+    t.string   "meaning",                               null: false
     t.text     "note"
     t.string   "word_type",     default: "GenericWord", null: false
     t.integer  "lesson_id"

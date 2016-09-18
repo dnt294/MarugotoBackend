@@ -11,6 +11,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'cocoon'
+
+#editor gems
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

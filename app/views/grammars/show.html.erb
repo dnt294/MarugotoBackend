@@ -9,14 +9,13 @@
         <strong>Title:</strong>
         <%= @grammar.title %>
     </h1>
-    <h1>
+    <h2>
         <strong>Explanation:</strong>
         <%= @grammar.explanation %>
-    </h1>
-    <p>
-        <strong>Note:</strong>
-        <%= @grammar.note %>
-    </p>
+    </h2>
+    <div class="ui segment">
+        <%= @grammar.note.html_safe %>
+    </div>
     <div class="ui horizontal divider">
         Ví dụ
     </div>
