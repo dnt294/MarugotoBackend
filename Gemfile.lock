@@ -5,6 +5,14 @@ GIT
     semantic-ui-sass (2.2.4.0)
       sass (>= 3.2)
 
+GIT
+  remote: git://github.com/kaanoo2904/ckeditor.git
+  revision: cb6fb564526c5b44a308c585fb278f2ba1966fd8
+  specs:
+    ckeditor (4.2.0)
+      cocaine
+      orm_adapter (~> 0.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,9 +67,6 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
-    ckeditor (4.2.0)
-      cocaine
-      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cloudinary (1.2.3)
@@ -235,7 +240,7 @@ DEPENDENCIES
   better_errors
   byebug
   carrierwave
-  ckeditor
+  ckeditor!
   cloudinary
   cocoon
   factory_girl_rails

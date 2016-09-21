@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dyqf2hhom
+  api_key: '293615166825662'
+  api_secret: VlFO_d2MSen_nu9tdyn_GMDFEzo
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dyqf2hhom
+  api_key: '293615166825662'
+  api_secret: VlFO_d2MSen_nu9tdyn_GMDFEzo
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dyqf2hhom
+  api_key: '293615166825662'
+  api_secret: VlFO_d2MSen_nu9tdyn_GMDFEzo
+  enhance_image_tag: true
+  static_image_support: false
