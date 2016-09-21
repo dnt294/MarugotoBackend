@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount Ckeditor::Engine => '/ckeditor'
+    mount Ckeditor::Engine => '/ckeditor'
     root 'home#welcome'
 
     resources :grammars

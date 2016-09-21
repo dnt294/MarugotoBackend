@@ -13,12 +13,14 @@ gem 'simple_form'
 gem 'cocoon'
 
 #editor gems
-gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'carrierwave'
+gem 'cloudinary'
 gem 'mini_magick'
-
+gem 'carrierwave'
+gem 'ckeditor', github: 'kaanoo2904/ckeditor'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
