@@ -22,3 +22,6 @@
 
 # Nodejs Modules
 /node_modules/*
+
+#Development upload files
+/public/uploads/*
