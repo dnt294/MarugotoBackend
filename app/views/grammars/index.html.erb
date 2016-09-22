@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="ui container">
-    <table class="ui celled padded striped unstackable table">
+    <table class="ui celled padded unstackable structured table">
         <thead>
             <tr>
                 <th class="two wide center aligned">Lesson</th>
@@ -10,22 +10,26 @@
             </tr>
         </thead>
         <tbody>
-            <% @grammars.each do |grammar| %>
-                <tr>
-                    <td><%= grammar.lesson.select_label %></td>
-                    <td><%= link_to grammar.title, grammar %></td>
-                    <td><%= grammar.explanation %></td>
-                    <td>
-                        <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>
-                            <i class="edit icon"></i>
+            <% @lessons_with_grammar.each do |lesson| %>
+                <% lesson.grammars.each do |grammar| %>
+                    <tr>
+                        <% if grammar == lesson.grammars.first %>
+                            <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_label %></td>
                         <% end %>
-                    </td>
-                    <td>
-                        <%= link_to grammar, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui circular icon button' do %>
-                            <i class="delete icon"></i>
-                        <% end %>
-                    </td>
-                </tr>
+                        <td><%= link_to grammar.title, grammar %></td>
+                        <td><%= grammar.explanation %></td>
+                        <td>
+                            <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>
+                                <i class="edit icon"></i>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= link_to grammar, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui circular icon button' do %>
+                                <i class="delete icon"></i>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
             <% end %>
         </tbody>
     </table>

@@ -5,6 +5,7 @@ class Kanji < ApplicationRecord
 
 
     belongs_to :lesson
+    counter_culture :lesson
     has_many :examples, as: :examplable
 
     #####     Define radical relationship ######

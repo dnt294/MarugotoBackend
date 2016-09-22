@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916185907) do
+ActiveRecord::Schema.define(version: 20160922032507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,8 +86,11 @@ ActiveRecord::Schema.define(version: 20160916185907) do
   create_table "lessons", force: :cascade do |t|
     t.string   "book"
     t.integer  "lesson"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "grammars_count",  default: 0, null: false
+    t.integer  "kanjis_count",    default: 0, null: false
+    t.integer  "new_words_count", default: 0, null: false
   end
 
   create_table "new_words", force: :cascade do |t|

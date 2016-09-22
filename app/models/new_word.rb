@@ -13,6 +13,7 @@ class NewWord < ApplicationRecord
 
     ##### ------------------- RELATIONSHIP --------------------------------####
     belongs_to :lesson
+    counter_culture :lesson
     has_many :examples, as: :examplable
 
     has_one :adj_form, dependent: :destroy, inverse_of: :new_word
