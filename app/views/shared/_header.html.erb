@@ -8,11 +8,11 @@
         <%= link_to "Marugoto Grammars", grammars_path, class: "item"  %>
     </div>
     <div class="right menu">
-        <% if current_page?(kanjis_url) %>
+        <% if current_controller_is 'kanjis' %>
             <%= render 'shared/header_kanji' %>
-        <% elsif current_page?(new_words_url) %>
+        <% elsif current_controller_is 'new_words' %>
             <%= render 'shared/header_new_word' %>
-        <% elsif current_page?(grammars_url) %>
+        <% elsif current_controller_is 'grammars' %>
             <%= render 'shared/header_grammar' %>
         <% end %>
     </div>
