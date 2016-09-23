@@ -51,6 +51,16 @@ CKEDITOR.editorConfig = function( config )
     { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
   ];
 
+  config.toolbar_example = [
+    { name: 'colors', items: [ 'TextColor' ] }
+  ];
+
+  config.toolbar_example_note = [
+    { name: 'note', items: [ 'TextColor', 'BulletedList' ] }
+  ];
+
+    config.removePlugins = 'elementspath';
+
   config.toolbar = 'mini';
 
 

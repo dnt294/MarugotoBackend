@@ -6,11 +6,11 @@
             </div>
             <div class="fourteen wide column">
                 <div class="two fields">
-                    <%= f.input :sentences %>
-                    <%= f.input :kanji_version %>
+                    <%= f.input :sentences, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
+                    <%= f.input :kanji_version, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
                 </div>
                 <%= f.input :meaning %>
-                <%= f.input :note, input_html: {rows: 2 } %>
+                <%= f.input :note, as: :ckeditor, input_html: {ckeditor: { height: 100, toolbar: 'example_note' } } %>
             </div>
         </div>
     </div>

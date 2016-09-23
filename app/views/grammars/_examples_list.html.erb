@@ -2,10 +2,10 @@
     <tbody>
         <tr>
             <td>
-                <h3><%= example.sentences %></h3>
+                <h3><%= example.sentences.html_safe %></h3>
             </td>
             <td>
-                <h3><%= example.kanji_version %></h3>
+                <h3><%= example.kanji_version.html_safe %></h3>
             </td>
         </tr>
         <tr>
@@ -16,7 +16,7 @@
         <% if example.note.presence %>
             <tr>
                 <td colspan="2" >
-                    <%= example.note %>
+                    <%= example.note.html_safe %>
                 </td>
             </tr>
         <% end %>
