@@ -4,7 +4,7 @@ class GrammarsController < ApplicationController
     # GET /grammars
     def index
         #@grammars = Grammar.all.includes(:lesson)
-        @lessons_with_grammar = Lesson.with_grammars.includes(:grammars)
+        @lessons_with_grammar = Lesson.marugoto_books.with_grammars.includes(:grammars)
     end
 
     # GET /grammars/1
