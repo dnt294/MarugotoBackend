@@ -16,7 +16,7 @@
                         <% if grammar == lesson.grammars.first %>
                             <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_label %></td>
                         <% end %>
-                        <td><%= link_to grammar.title, grammar %></td>
+                        <td><%= link_to grammar.title, grammar, class: 'multilines' %></td>
                         <td><%= grammar.explanation %></td>
                         <td>
                             <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>

@@ -5,17 +5,19 @@
         <%= @grammar.lesson.select_label %>
     </p>
     <div class="ui divider"></div>
-    <h1>
-        <strong>Title:</strong>
+    <h1 class="multilines">
+        <strong>Mẫu câu:</strong>
         <%= @grammar.title %>
     </h1>
     <h2>
-        <strong>Explanation:</strong>
+        <strong>Giải thích:</strong>
         <%= @grammar.explanation %>
     </h2>
-    <div class="ui segment">
-        <%= @grammar.note.html_safe %>
-    </div>
+    <% if @grammar.note.presence %>
+        <div class="ui segment">
+            <%= @grammar.note.html_safe %>
+        </div>
+    <% end %>
     <div class="ui horizontal divider">
         Ví dụ
     </div>
