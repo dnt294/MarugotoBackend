@@ -1,11 +1,9 @@
-<div class="ui green segment">
-    <div class="nested-fields">
-        <div class="two fields">
-            <%= f.input :sentences %>
-            <%= f.input :kanji_version %>
-        </div>
-        <%= f.input :meaning %>
-        <%= f.input :note, input_html: {rows: 2 } %>
-        <%= link_to_remove_association 'Xóa', f, class: 'ui negative mini basic bottom attached button' %>
+<div class="ui green segment nested-fields">
+    <div class="two fields">
+        <%= f.input :sentences %>
+        <%= f.input :kanji_version %>
     </div>
+    <%= f.input :meaning %>
+    <%= f.input :note, input_html: {rows: 2 } %>
+    <%= link_to_remove_association 'Xóa', f, class: 'ui negative mini basic bottom attached button' %>
 </div>

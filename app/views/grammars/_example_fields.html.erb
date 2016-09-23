@@ -1,17 +1,15 @@
-<div class="ui green segment">
-    <div class="nested-fields">
-        <div class="ui grid">
-            <div class="two wide column">
-                <%= link_to_remove_association 'Xóa ví dụ', f, class: 'ui negative basic button' %>
+<div class="ui green segment nested-fields">
+    <div class="ui grid">
+        <div class="two wide column">
+            <%= link_to_remove_association 'Xóa ví dụ', f, class: 'ui negative basic button' %>
+        </div>
+        <div class="fourteen wide column">
+            <div class="two fields">
+                <%= f.input :sentences, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
+                <%= f.input :kanji_version, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
             </div>
-            <div class="fourteen wide column">
-                <div class="two fields">
-                    <%= f.input :sentences, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
-                    <%= f.input :kanji_version, as: :ckeditor, input_html: { ckeditor: {height: 50, toolbar: 'example'} } %>
-                </div>
-                <%= f.input :meaning %>
-                <%= f.input :note, as: :ckeditor, input_html: {ckeditor: { height: 100, toolbar: 'example_note' } } %>
-            </div>
+            <%= f.input :meaning %>
+            <%= f.input :note, as: :ckeditor, input_html: {ckeditor: { height: 100, toolbar: 'example_note' } } %>
         </div>
     </div>
 </div>

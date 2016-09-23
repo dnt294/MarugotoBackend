@@ -5,10 +5,13 @@
         <%= csrf_meta_tags %>
         <%= javascript_include_tag 'application' %>
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag controller_name, 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
-        <%= render 'shared/header'%>
-        <%= yield %>
-        <%= render 'shared/footer' %>
+        <%= render 'shared/header' %>
+        <div class="main-body">
+            <%= yield %>
+        </div>
+        <%= render 'shared/footer'  %>
     </body>
 </html>

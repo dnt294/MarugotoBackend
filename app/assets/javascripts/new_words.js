@@ -10,6 +10,6 @@ function display_forms_tags() {
         $('.new-word.adj-form').hide();
     if (word_type === 'Verb')
         $('.new-word.verb-form').show()
-    else
+     else
         $('.new-word.verb-form').hide();
 }
