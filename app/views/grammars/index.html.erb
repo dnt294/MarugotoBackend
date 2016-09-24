@@ -6,7 +6,9 @@
                 <th class="two wide center aligned">Lesson</th>
                 <th class="six wide center aligned">Title</th>
                 <th class="six wide center aligned">Explanation</th>
-                <th colspan="2" class="two wide center aligned"></th>
+                <% if user_signed_in? %>
+                    <th colspan="2" class="two wide center aligned"></th>
+                <% end %>
             </tr>
         </thead>
         <tbody>
@@ -18,16 +20,18 @@
                         <% end %>
                         <td><%= link_to grammar.title, grammar, class: 'multilines' %></td>
                         <td><%= grammar.explanation %></td>
-                        <td>
-                            <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>
-                                <i class="edit icon"></i>
-                            <% end %>
-                        </td>
-                        <td>
-                            <%= link_to grammar, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui circular icon button' do %>
-                                <i class="delete icon"></i>
-                            <% end %>
-                        </td>
+                        <% if user_signed_in? %>
+                            <td>
+                                <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>
+                                    <i class="edit icon"></i>
+                                <% end %>
+                            </td>
+                            <td>
+                                <%= link_to grammar, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui circular icon button' do %>
+                                    <i class="delete icon"></i>
+                                <% end %>
+                            </td>
+                        <% end %>
                     </tr>
                 <% end %>
             <% end %>

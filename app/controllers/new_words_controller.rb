@@ -1,5 +1,6 @@
 class NewWordsController < ApplicationController
     before_action :set_new_word, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /new_words
     # GET /new_words.json

@@ -24,10 +24,12 @@
     <% @grammar.examples.each do |example| %>
         <%= render partial: 'examples_list', locals: { example: example } %>
     <% end %>
-    <div class="ui divider"></div>
-    <div class="ui buttons">
-        <%= link_to 'Edit', edit_grammar_path(@grammar), class: 'ui positive button' %>
-        <div class="or"></div>
-        <%= link_to 'Back', grammars_path, class: 'ui button' %>
-    </div>
+    <% if user_signed_in? %>
+        <div class="ui divider"></div>
+        <div class="ui buttons">
+            <%= link_to 'Edit', edit_grammar_path(@grammar), class: 'ui positive button' %>
+            <div class="or"></div>
+            <%= link_to 'Back', grammars_path, class: 'ui button' %>
+        </div>
+    <% end %>
 </div>

@@ -31,6 +31,8 @@
         <%= render @new_word.examples %>
     </div>
 <% end %>
-<div class="ui divider"></div>
-<%= link_to 'Edit', edit_new_word_path(@new_word), remote: true, class: 'ui primary button' %>
-<%= link_to 'Delete', @new_word, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'} %>
+<% if user_signed_in? %>
+    <div class="ui divider"></div>
+    <%= link_to 'Edit', edit_new_word_path(@new_word), remote: true, class: 'ui primary button' %>
+    <%= link_to 'Delete', @new_word, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'} %>
+<% end %>

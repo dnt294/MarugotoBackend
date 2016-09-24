@@ -28,5 +28,7 @@
     <strong>Lesson:</strong>
     <%= @kanji.lesson.lesson %>
 </p>
-<%= link_to 'Edit', edit_kanji_path(@kanji), remote: true, class: 'ui primary button' %>
-<%= link_to 'Delete', @kanji, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'}%>
+<% if user_signed_in? %>
+    <%= link_to 'Edit', edit_kanji_path(@kanji), remote: true, class: 'ui primary button' %>
+    <%= link_to 'Delete', @kanji, method: :delete, remote: true, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'}%>
+<% end %>

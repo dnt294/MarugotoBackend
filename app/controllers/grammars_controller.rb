@@ -1,5 +1,6 @@
 class GrammarsController < ApplicationController
     before_action :set_grammar, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /grammars
     def index

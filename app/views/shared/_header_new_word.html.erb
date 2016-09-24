@@ -7,4 +7,6 @@
         <% end %>
     </div>
 </div>
-<%= link_to 'New Word', new_new_word_path, remote: true, class: "item" %>
+<% if user_signed_in? %>
+    <%= link_to 'New Word', new_new_word_path, remote: true, class: "item" %>
+<% end %>
