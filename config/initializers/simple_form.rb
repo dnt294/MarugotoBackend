@@ -57,7 +57,7 @@ SimpleForm.setup do |config|
 
     end
 
-    config.wrappers :ui_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_checkbox, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui checkbox' do |input|
             input.use :label_input
@@ -65,7 +65,7 @@ SimpleForm.setup do |config|
         end
     end
 
-    config.wrappers :ui_slider_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_slider_checkbox, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui slider checkbox' do |input|
             input.use :label_input
@@ -73,7 +73,7 @@ SimpleForm.setup do |config|
         end
     end
 
-    config.wrappers :ui_toggle_checkbox, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
+    config.wrappers :ui_toggle_checkbox, tag: 'div', class: "inline field", error_class: 'error', hint_class: 'with_hint' do |b|
         b.use :html5
         b.wrapper tag: 'div', class: 'ui toggle checkbox' do |input|
             input.use :label_input

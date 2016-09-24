@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
+
     mount Ckeditor::Engine => '/ckeditor'
     root 'home#welcome'
 
+
+    devise_for :users
+
     resources :grammars
+
     namespace :new_word do
         resources :verb_forms
-    end
-    namespace :new_word do
         resources :adj_forms
     end
-    # namespace :new_word do
-    # end
-    # namespace :new_word do
-    # end
-
 
     resources :examples
     resources :lessons
