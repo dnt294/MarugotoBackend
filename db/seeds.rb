@@ -18,3 +18,16 @@ end
     Lesson.create(book: 'A2/2', lesson: lesson)
     Lesson.create(book: 'A2B1', lesson: lesson)
 end
+
+case Rails.env
+when 'development'
+    (1..15).each do |grammar|
+        Grammar.create(title: "grammar #{grammar}", explanation: 'dummy', lesson: Lesson.marugoto_books.sample)
+    end
+    (1..25).each do |kanji|
+        Kanji.create(kanji: "kanji #{kanji}", meaning: 'dummy', stroke_count: 1, lesson: Lesson.marugoto_books.sample)
+    end
+    (1..25).each do |new_word|
+        NewWord.create(word: "word #{new_word}", word_type: NewWord.types.sample, meaning: 'dummy', lesson: Lesson.marugoto_books.sample)
+    end
+end

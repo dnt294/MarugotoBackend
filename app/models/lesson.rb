@@ -16,5 +16,7 @@ class Lesson < ApplicationRecord
         "#{book} - Lesson #{lesson}"
     end
 
-
+    def select_short_label
+        "#{book} - #{lesson}"
+    end
 end

@@ -23,5 +23,30 @@ body, .main-body, .all-tab {
     width: 50%;
     height: 100%;
     padding: 5px;
-    padding-bottom: 30px;
+}
+
+@mixin row-type($background) {
+    color: white;
+    background-color: $background;
+    font-weight: bold;
+}
+
+
+.row-Noun {
+    @include row-type(blue);
+
+}
+.row-Verb {
+    @include row-type(orange);
+}
+.row-Adj {
+    @include row-type(violet);
+}
+
+.row-Phrase {
+    @include row-type(brown);
+}
+.row-GenericWord {
+    @include row-type(gray);
+
 }

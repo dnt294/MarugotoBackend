@@ -9,7 +9,7 @@ class NewWord < ApplicationRecord
     scope :generic_words, -> {where( word_type: 'GenericWord') }
     scope :nouns, -> { where(word_type: 'Noun') }
     scope :phrases, -> { where(word_type: 'Phrase') }
-    scope :verbs, -> { where(word_type: 'Verbs') }
+    scope :verbs, -> { where(word_type: 'Verb') }
 
     ##### ------------------- RELATIONSHIP --------------------------------####
     belongs_to :lesson
