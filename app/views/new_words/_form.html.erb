@@ -10,7 +10,7 @@
         <%= f.input :word_type, collection: NewWord.types, input_html: { onchange: 'display_forms_tags()' } %>
         <%= f.association :lesson, label_method: :select_label, value_method: :id, collection: Lesson.marugoto_books %>
     </div>
-    <div class="hidden new-word verb-form">
+    <div class="new-word verb-form hidden">
         <%= f.simple_fields_for :verb_form do |v| %>
             <%= render 'verb_form_fields', v: v %>
         <% end %>
