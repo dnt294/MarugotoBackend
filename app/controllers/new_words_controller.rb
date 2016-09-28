@@ -29,7 +29,7 @@ class NewWordsController < ApplicationController
         respond_to do |format|
             if @new_word.save
                 format.js {
-                    @new_words = NewWord.of_book(@new_word.lesson_id)
+                    @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
                     @new_word = NewWord.new(lesson_id: cache_lesson_id)
                 }
 
@@ -45,7 +45,7 @@ class NewWordsController < ApplicationController
         respond_to do |format|
             if @new_word.update(new_word_params)
                 format.js {
-                    @new_words = NewWord.of_book(@new_word.lesson_id)
+                    @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
                     @new_word = NewWord.find(params[:id])
                 }
             else
