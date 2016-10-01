@@ -1,3 +1,9 @@
+<div class="item">
+    <%= form_tag search_new_words_path, method: :get, remote: :true, class: 'ui icon input' do %>
+        <%= search_field_tag 'word', nil, placeholder: 'search for words' %>
+        <i class="search icon"></i>
+    <% end %>
+</div>
 <div class="ui dropdown item">
     <div class="default text">Bài học</div>
     <i class="dropdown icon"></i>

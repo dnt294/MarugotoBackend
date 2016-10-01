@@ -2,6 +2,10 @@ function filter_by_lesson() {
     $("#form_filter_lesson").submit();
 }
 
+function search() {
+
+}
+
 function display_forms_tags() {
     var word_type = $('#new_word_word_type').val();
     if (word_type === 'Adj')
