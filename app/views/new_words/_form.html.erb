@@ -4,7 +4,7 @@
         <%= f.input :word %>
         <%= f.input :kanji_version %>
     </div>
-    <%= f.input :meaning, label: 'Nghĩa' %>
+    <%= f.input :meaning, label: 'Nghĩa', as: :text, input_html: { rows: 2 } %>
     <%= f.input :note, input_html: { rows: 2 } %>
     <div class="two fields">
         <%= f.input :word_type, collection: NewWord.types, input_html: { onchange: 'display_forms_tags()' } %>

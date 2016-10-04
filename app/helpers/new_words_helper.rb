@@ -13,4 +13,19 @@ module NewWordsHelper
 
         word
     end
+
+    def word_type_colour(word)
+        case word.word_type
+        when 'Adj'
+            'pink'
+        when 'Noun'
+            'blue'
+        when 'Verb'
+            'orange'
+        when 'Phrase'
+            'brown'
+        when 'GenericWord'
+            'gray'
+        end
+    end
 end

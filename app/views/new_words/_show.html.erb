@@ -1,28 +1,45 @@
 <div class="ui segment">
-    <h2> Word: <%= @new_word.word %> </h2>
-    <h2> Kanji Version: <%= @new_word.kanji_version %> </h2>
-    <p>
-        <strong>Meaning:</strong>
-        <%= @new_word.meaning %>
-    </p>
-    <p>
-        <strong>Note:</strong>
-        <%= @new_word.note %>
-    </p>
-    <p>
-        <strong>Word Type:</strong>
+    <a class="ui tag big label"><%= @new_word.lesson.select_short_label %></a>
+    <a class="ui tag big label <%= word_type_colour @new_word %>">
         <%= @new_word.word_type %>
-    </p>
-    <p>
-        <strong>Lesson:</strong>
-        <%= @new_word.lesson.lesson %>
-    </p>
+    </a>
     <% if @new_word.verb_form.present? %>
-        <%= render @new_word.verb_form %>
+        <a class="ui tag big label">
+            <strong>Động từ loại: </strong>
+            <%= @new_word.verb_form.verb_type %>
+        </a>
     <% elsif @new_word.adj_form.present? %>
-        <%= render @new_word.adj_form %>
+        <a class="ui tag green big label">
+            <%= @new_word.adj_form.adj_type %>
+        </a>
     <% end %>
 </div>
+<div class="ui segment">
+    <div class="ui internally celled grid">
+        <div class="row">
+            <div class="eight wide column">
+                <div class="ui huge red header"><%= @new_word.word %></div>
+            </div>
+            <% if @new_word.kanji_version.present? %>
+                <div class="eight wide column">
+                    <div class="ui huge blue header"><%= @new_word.kanji_version %></div>
+                </div>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <h2>
+                    <%= simple_format @new_word.meaning %>
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+<% if @new_word.verb_form.present? %>
+    <div class="ui segment">
+        <%= render @new_word.verb_form %>
+    </div>
+<% end %>
 <% if @new_word.examples.any? %>
     <div class="ui horizontal divider">
         Ví dụ

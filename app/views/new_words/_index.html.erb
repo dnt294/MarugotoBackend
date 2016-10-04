@@ -13,7 +13,7 @@
                 <td class="single line center aligned row-<%= new_word.word_type%>"><%= new_word.lesson.select_short_label %></td>
                 <td class="center aligned"><%= link_to new_word.word, new_word, remote: true %></td>
                 <td><%= new_word.kanji_version %></td>
-                <td><%= new_word.meaning %></td>
+                <td><%= simple_format new_word.meaning %></td>
             </tr>
         <% end %>
     </tbody>

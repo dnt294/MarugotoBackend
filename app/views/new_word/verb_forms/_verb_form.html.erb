@@ -1,20 +1,40 @@
-<p>
-    <strong>Verb type:</strong>
-    <%= @new_word.verb_form.verb_type %>
-</p>
-<p>
-    <strong>Dictionary Form:</strong>
-    <%= @new_word.verb_form.dictionary_form %>
-</p>
-<p>
-    <strong>Te Form:</strong>
-    <%= @new_word.verb_form.te_form %>
-</p>
-<p>
-    <strong>Ta Fom:</strong>
-    <%= @new_word.verb_form.ta_form %>
-</p>
-<p>
-    <strong>Nai Form:</strong>
-    <%= @new_word.verb_form.nai_form %>
-</p>
+<div class="ui internally celled grid">
+    <div class="row">
+        <div class="four wide column">
+            Thể từ điển  
+        </div>
+        <div class="twelve wide column">
+            <%= @new_word.verb_form.dictionary_form %>
+        </div>
+    </div>
+    <% if @new_word.verb_form.te_form.present? %>
+        <div class="row">
+            <div class="four wide column">
+                Thể Te: 
+        </div>
+            <div class="twelve wide column">
+                <%= @new_word.verb_form.te_form %>
+            </div>
+        </div>
+    <% end %>
+    <% if @new_word.verb_form.ta_form.present? %>
+        <div class="row">
+            <div class="four wide column">
+                Thể Ta:
+        </div>
+            <div class="twelve wide column">
+                <%= @new_word.verb_form.ta_form %>
+            </div>
+        </div>
+    <% end %>
+    <% if @new_word.verb_form.nai_form.present? %>
+        <div class="row">
+            <div class="four wide column">
+                Thể Nai:
+        </div>
+            <div class="twelve wide column">
+                <%= @new_word.verb_form.nai_form %>
+            </div>
+        </div>
+    <% end %>
+</div>
