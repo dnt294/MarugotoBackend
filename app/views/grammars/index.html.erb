@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="ui container">
     <table class="ui celled padded unstackable structured table">
         <thead>
@@ -18,8 +17,16 @@
                         <% if grammar == lesson.grammars.first %>
                             <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_label %></td>
                         <% end %>
-                        <td><%= link_to grammar.title, grammar, class: 'multilines' %></td>
-                        <td><%= grammar.explanation %></td>
+                        <td>
+                            <div class="ui header">
+                                <%= link_to simple_format(grammar.title), grammar %>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui header">
+                                <%= grammar.explanation %>
+                            </div>
+                        </td>
                         <% if user_signed_in? %>
                             <td>
                                 <%= link_to edit_grammar_path(grammar) , class: 'ui circular icon button' do %>

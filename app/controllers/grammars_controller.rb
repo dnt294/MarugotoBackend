@@ -28,7 +28,7 @@ class GrammarsController < ApplicationController
         @grammar = Grammar.new(grammar_params)
 
         if @grammar.save
-            redirect_to @grammar, notice: 'Grammar was successfully created.'
+            redirect_to @grammar, flash: {success: 'Grammar was successfully created.'}
         else
             render :new
         end
@@ -38,7 +38,7 @@ class GrammarsController < ApplicationController
 
     def update
         if @grammar.update(grammar_params)
-            redirect_to @grammar, notice: 'Grammar was successfully updated.'
+            redirect_to @grammar, flash: {success: 'Grammar was successfully updated.'}
         else
             render :edit
         end

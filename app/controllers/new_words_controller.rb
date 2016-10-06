@@ -31,6 +31,7 @@ class NewWordsController < ApplicationController
                 format.js {
                     @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
                     @new_word = NewWord.new(lesson_id: cache_lesson_id)
+                    flash.now[:notice] = 'New word created!'
                 }
 
             else
@@ -47,6 +48,7 @@ class NewWordsController < ApplicationController
                 format.js {
                     @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
                     @new_word = NewWord.find(params[:id])
+                    flash.now[:success] = 'New word updated!'
                 }
             else
                 format.js

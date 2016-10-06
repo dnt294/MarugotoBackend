@@ -1,16 +1,13 @@
 <div class="ui container">
-    <p id="notice"><%= notice %></p>
     <p>
         <strong>Lesson:</strong>
         <%= @grammar.lesson.select_label %>
     </p>
     <div class="ui divider"></div>
-    <h1 class="multilines">
-        <strong>Mẫu câu:</strong>
-        <%= @grammar.title %>
-    </h1>
+    <div class="ui huge red header">
+        <%= simple_format @grammar.title %>
+    </div>
     <h2>
-        <strong>Giải thích:</strong>
         <%= @grammar.explanation %>
     </h2>
     <% if @grammar.note.presence %>
@@ -18,11 +15,13 @@
             <%= @grammar.note.html_safe %>
         </div>
     <% end %>
-    <div class="ui horizontal divider">
-        Ví dụ
+    <% if @grammar.examples.any? %>
+        <div class="ui horizontal divider">
+            Ví dụ
     </div>
-    <% @grammar.examples.each do |example| %>
-        <%= render partial: 'examples_list', locals: { example: example } %>
+        <% @grammar.examples.each do |example| %>
+            <%= render partial: 'examples_list', locals: { example: example } %>
+        <% end %>
     <% end %>
     <% if user_signed_in? %>
         <div class="ui divider"></div>
