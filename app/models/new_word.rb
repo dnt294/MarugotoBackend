@@ -2,7 +2,7 @@ class NewWord < ApplicationRecord
     include PgSearch
 
     ##### ------------------ SCOPE ----------------------------------------####
-    default_scope { order('created_at').order('lesson_id')}
+    default_scope { order('new_words.created_at').order('lesson_id')}
     scope :of_book, ->(lesson_id) { where("lesson_id = ?", lesson_id) if lesson_id.present? }
 
     pg_search_scope :search_for, against: %i(word kanji_version), using: [:tsearch]

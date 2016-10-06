@@ -10,7 +10,9 @@
     <tbody>
         <% @new_words.each do |new_word| %>
             <tr>
-                <td class="single line center aligned row-<%= new_word.word_type%>"><%= new_word.lesson.select_short_label %></td>
+                <td class="single line center aligned row-<%= new_word.word_type %>">
+                    <%= new_word.lesson.select_short_label %>
+                </td>
                 <td class="center aligned">
                     <div class="ui red header">
                         <%= link_to new_word.word, new_word, remote: true %>
@@ -18,8 +20,9 @@
                 </td>
                 <td>
                     <div class="ui red header">
-                        <%= new_word.kanji_version %></td>
-                </div>
+                        <%= new_word.kanji_version %>
+                    </div>
+                </td>
                 <td>
                     <div class="ui header">
                         <%= simple_format new_word.meaning %>

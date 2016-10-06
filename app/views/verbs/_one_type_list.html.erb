@@ -1,0 +1,54 @@
+<table class="ui celled padded unstackable table">
+    <thead>
+        <tr>
+            <th class="wide">Meaning</th>
+            <th class="wide center aligned">Word</th>
+            <th class="wide center aligned">Kanji Version</th>
+            <th class="wide center aligned">Dictionary</th>
+            <th class="wide center aligned">Te</th>
+            <th class="wide center aligned">Ta</th>
+            <th class="wide center aligned">Nai</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% verbs.each do |verb| %>
+            <tr>
+                <td>
+                    <div class="ui header">
+                        <%= simple_format verb.meaning %>
+                    </div>
+                </td>
+                <td class="center aligned">
+                    <div class="ui red header">
+                        <%= verb.word %>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui red header">
+                        <%= verb.kanji_version %>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui header">
+                        <%= verb.verb_form.dictionary_form %>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui header">
+                        <%= verb.verb_form.te_form %>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui header">
+                        <%= verb.verb_form.ta_form %>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui header">
+                        <%= verb.verb_form.nai_form %>
+                    </div>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

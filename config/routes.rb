@@ -16,12 +16,15 @@ Rails.application.routes.draw do
 
     resources :examples
     resources :lessons
+
     resources :new_words do
         collection do
             get 'sort/:lesson', action: :sort, as: 'sort'
             get 'search'
         end
     end
+
+    resources :verbs, only: [:index]
 
     resources :kanjis do
         collection do
