@@ -17,3 +17,12 @@ function display_forms_tags() {
     else
         $('.new-word.verb-form').hide();
 }
+
+$(document).ready(function() {
+
+    $(document).on('keydown', function(e) {
+        if (e.shiftKey && e.which == 70) {
+            $('.search.words').focus();
+        }
+    })
+})
