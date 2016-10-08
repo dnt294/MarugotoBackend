@@ -1,4 +1,6 @@
 class NewWordsController < ApplicationController
+    include ApplicationHelper
+
     before_action :set_new_word, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
@@ -14,7 +16,7 @@ class NewWordsController < ApplicationController
 
     # GET /new_words/new
     def new
-        @new_word = NewWord.new
+        @new_word = NewWord.new(lesson_id: default_lesson)
     end
 
     # GET /new_words/1/edit
@@ -25,12 +27,12 @@ class NewWordsController < ApplicationController
     def create
         clear_form_params
         @new_word = NewWord.new(new_word_params)
-        cache_lesson_id = @new_word.lesson_id
+        cache_marugoto_lesson(@new_word.lesson_id)
         respond_to do |format|
             if @new_word.save
                 format.js {
                     @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
-                    @new_word = NewWord.new(lesson_id: cache_lesson_id)
+                    @new_word = NewWord.new(lesson_id: default_lesson)
                     flash.now[:notice] = 'New word created!'
                 }
 

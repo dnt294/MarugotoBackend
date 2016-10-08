@@ -1,4 +1,6 @@
 class GrammarsController < ApplicationController
+    include ApplicationHelper
+
     before_action :set_grammar, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
@@ -15,7 +17,7 @@ class GrammarsController < ApplicationController
 
     # GET /grammars/new
     def new
-        @grammar = Grammar.new
+        @grammar = Grammar.new(lesson_id: default_lesson)
     end
 
     # GET /grammars/1/edit
@@ -26,7 +28,7 @@ class GrammarsController < ApplicationController
 
     def create
         @grammar = Grammar.new(grammar_params)
-
+        cache_marugoto_lesson(@grammar.lesson_id)
         if @grammar.save
             redirect_to @grammar, flash: {success: 'Grammar was successfully created.'}
         else
