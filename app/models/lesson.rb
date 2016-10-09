@@ -7,10 +7,11 @@ class Lesson < ApplicationRecord
     validates_presence_of :book
     validates_presence_of :lesson
 
-    scope :kanji_books, -> { where(book: 'Kanji') }
+    scope :kanji_books, -> { where(book: 'Kanji').order('book').order('lesson') }
     scope :marugoto_books, -> {where.not(book: 'Kanji').order('book').order('lesson') }
 
     scope :with_grammars, -> {joins(:grammars)}
+    scope :with_kanjis, -> {joins(:kanjis)}
 
     def select_label
         "#{book} - Lesson #{lesson}"

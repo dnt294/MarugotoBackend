@@ -4,8 +4,9 @@ class KanjisController < ApplicationController
 
     # GET /kanjis
     def index
-        @kanjis = Kanji.all.includes(:lesson)
-        @lessons = [*1..32]
+        #@kanjis = Kanji.all.includes(:lesson)
+        #@lessons = [*1..32]
+        @lessons_with_kanji = Lesson.kanji_books.with_kanjis.includes(:kanjis)
     end
 
     # GET /kanjis/1

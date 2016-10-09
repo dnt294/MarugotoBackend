@@ -13,6 +13,12 @@
  *= require_self
  */
 @import "semantic-ui";
+@import "bootstrap-sprockets";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/clearfix";
+@import "bootstrap/mixins/grid-framework";
+@import "bootstrap/mixins/grid";
+@import "bootstrap/grid";
 
 body {
 	background-color: #F2F2F2;

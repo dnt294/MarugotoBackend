@@ -1,13 +1,21 @@
-<div class="ui">
-    <div class=" ui vertical segment grid">
-        <div class="eight wide column">
-            <div id="kanji-list">
-                <%= render 'index' %>
-            </div>
+<div class="container-fluid ui container">
+    <% @lessons_with_kanji.each do |lesson| %>
+        <h4 class="ui horizontal divider header">
+            <%= lesson.select_label %>
+        </h4>
+        <div class="row">
+            <% lesson.kanjis.each do |kanji| %>
+                <div class="col-xs-6 col-sm-3 col-md-2 bottom-buffer">
+                    <div class="ui segment">
+                        <div class="ui huge red center aligned header">
+                            <%= kanji.kanji %>
+                        </div>
+                        <div class="ui center aligned header">
+                            <%= kanji.meaning %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         </div>
-        <div class="eight wide column">
-            <div id="right-half-panel">
-            </div>
-        </div>
-    </div>
+    <% end %>
 </div>

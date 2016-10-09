@@ -19,13 +19,16 @@ end
     Lesson.create(book: 'A2B1', lesson: lesson)
 end
 
+KANJI = ["一","二","三","四","五","六","七","八","九","十","日","月","火","水","木","金","蒔"]
+
 case Rails.env
 when 'development'
     (1..15).each do |grammar|
         Grammar.create(title: "grammar #{grammar}", explanation: 'dummy', lesson: Lesson.marugoto_books.sample)
     end
-    (1..25).each do |kanji|
-        Kanji.create(kanji: "kanji #{kanji}", meaning: 'dummy', stroke_count: 1, lesson: Lesson.marugoto_books.sample)
+    KANJI.each do |kanji|
+        Kanji.create(kanji: kanji, meaning: 'dummy', stroke_count: 1, lesson: Lesson.kanji_books.first)
+        Kanji.create(kanji: kanji, meaning: 'dummy', stroke_count: 1, lesson: Lesson.kanji_books.second)
     end
     (1..25).each do |new_word|
         NewWord.create(word: "word #{new_word}", word_type: NewWord.types.sample, meaning: 'dummy', lesson: Lesson.marugoto_books.sample)
