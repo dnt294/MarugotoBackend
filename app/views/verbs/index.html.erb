@@ -1,38 +1,8 @@
-<div class="ui grid">
-    <div class="three wide column">
-        <div class="ui vertical menu">
-            <a class="teal item">
-                <span>Tổng</span>
-                <div class="ui teal left pointing label">
-                    <%= @verbs_count %>
-                </div>
-            </a>
-            <a id='first-type-toggle' class="active item" onclick="first_type_onclick()">
-                <span>Loại 1</span>
-                <div class="ui label">
-                    <%= @ftv_count %>
-                </div>
-            </a>
-            <a id='second-type-toggle' class="item" onclick="second_type_onclick()">
-                <span>Loại 2</span>
-                <div class="ui label">
-                    <%= @stv_count %>
-                </div>
-            </a>
-            <div class="item">
-                <div class="ui transparent icon input">
-                    <input type="text" placeholder="Search word ...">
-                    <i class="search icon"></i>
-                </div>
-            </div>
-        </div>
+<div class="ui container">
+    <div id="first-type-verbs">
+        <%= render 'one_type_list', verbs: @first_type_verbs %>
     </div>
-    <div class="thirteen wide column">
-        <div id="first-type-verbs">
-            <%= render 'one_type_list', verbs: @first_type_verbs %>
-        </div>
-        <div id="second-type-verbs" style="display: none">
-            <%= render 'one_type_list', verbs: @second_type_verbs %>
-        </div>
+    <div id="second-type-verbs" style="display: none">
+        <%= render 'one_type_list', verbs: @second_type_verbs %>
     </div>
 </div>

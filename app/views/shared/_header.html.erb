@@ -1,17 +1,15 @@
-<div class="ui borderless menu fixed
+<div class="ui borderless menu fixed stackable
     <%= 'top fixed hidden transition following-header' if current_page?(root_url) %> 
     ">
-    <div class="left menu">
-        <%= link_to "Home", root_path, class: "header item"  %>
-        <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
-        <%= link_to "Marugoto Grammars", grammars_path, class: 'item' %>
-        <%= link_to "Marugoto Words", new_words_path, class: "item"  %>
-        <div class="ui secondary menu">
-            <div class="ui dropdown item">
-                <i class="angle down icon"></i>
-                <div class="menu">
-                    <%= link_to 'Verbs', verbs_path, class: 'item' %>
-                </div>
+    <%= link_to "Home", root_path, class: "header item"  %>
+    <%= link_to "512 Kanji", kanjis_path, class: "item"  %>
+    <%= link_to "Marugoto Grammars", grammars_path, class: 'item' %>
+    <%= link_to "Marugoto Words", new_words_path, class: "item"  %>
+    <div class="ui secondary menu">
+        <div class="ui dropdown item">
+            <i class="angle down icon"></i>
+            <div class="menu">
+                <%= link_to 'Verbs', verbs_path, class: 'item' %>
             </div>
         </div>
     </div>
@@ -22,6 +20,8 @@
             <%= render 'shared/header_new_word' %>
         <% elsif current_controller_is 'grammars' %>
             <%= render 'shared/header_grammar' %>
+        <% elsif current_controller_is 'verbs' %>
+            <%= render 'shared/header_verb' %>
         <% end %>
     </div>
 </div>
