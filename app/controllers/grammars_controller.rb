@@ -17,7 +17,7 @@ class GrammarsController < ApplicationController
 
     # GET /grammars/new
     def new
-        @grammar = Grammar.new(lesson_id: default_lesson)
+        @grammar = Grammar.new(lesson_id: default_marugoto_lesson)
     end
 
     # GET /grammars/1/edit

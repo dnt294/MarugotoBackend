@@ -1,12 +1,3 @@
-<div class="ui dropdown item">
-    <div class="default text">Bài học</div>
-    <i class="dropdown icon"></i>
-    <div class="menu" style="overflow:auto;max-height:500px;">
-        <% kanji_books.each do |book| %>
-            <%=  link_to book.select_label, sort_kanjis_path(lesson: book), remote: true, class: 'item' %>
-        <% end %>
-    </div>
-</div>
 <% if user_signed_in? %>
-    <%= link_to 'New Kanji', new_kanji_path, remote: true, class: "item" %>
+    <%= link_to 'New Kanji', new_kanji_path, class: "item" %>
 <% end %>

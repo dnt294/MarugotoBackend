@@ -17,11 +17,19 @@ module ApplicationHelper
         end
     end
 
-    def default_lesson
+    def default_marugoto_lesson
         cookies[:marugoto_lesson] || nil
     end
 
     def cache_marugoto_lesson(lesson_id)
         cookies.permanent[:marugoto_lesson] = lesson_id
+    end
+
+    def default_kanji_lesson
+        cookies[:kanji_lesson] || nil
+    end
+
+    def cache_kanji_lesson(lesson_id)
+        cookies.permanent[:kanji_lesson] = lesson_id
     end
 end

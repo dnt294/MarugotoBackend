@@ -16,7 +16,7 @@ class NewWordsController < ApplicationController
 
     # GET /new_words/new
     def new
-        @new_word = NewWord.new(lesson_id: default_lesson)
+        @new_word = NewWord.new(lesson_id: default_marugoto_lesson)
     end
 
     # GET /new_words/1/edit
@@ -32,7 +32,7 @@ class NewWordsController < ApplicationController
             if @new_word.save
                 format.js {
                     @new_words = NewWord.of_book(@new_word.lesson_id).includes(:lesson)
-                    @new_word = NewWord.new(lesson_id: default_lesson)
+                    @new_word = NewWord.new(lesson_id: default_marugoto_lesson)
                     flash.now[:notice] = 'New word created!'
                 }
 

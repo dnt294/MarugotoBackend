@@ -1,0 +1,25 @@
+<h1><%= kanjis.first.lesson.select_label %></h1>
+<table class="ui celled padded unstackable table">
+    <thead>
+        <tr>
+            <th class="center aligned">Kanji</th>
+            <th class="center aligned">Nghĩa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @kanjis.each do |kanji| %>
+            <tr>
+                <td class="center aligned">
+                    <div class="ui red header">
+                        <%= kanji.kanji %>
+                    </div>
+                </td>
+                <td class="center aligned">
+                    <div class="ui header">
+                        <%= kanji.meaning %>
+                    </div>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

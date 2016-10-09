@@ -1,4 +1,6 @@
 class KanjisController < ApplicationController
+    include ApplicationHelper
+
     before_action :set_kanji, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
@@ -15,7 +17,7 @@ class KanjisController < ApplicationController
 
     # GET /kanjis/new
     def new
-        @kanji = Kanji.new
+        @kanji = Kanji.new(lesson_id: default_kanji_lesson)
     end
 
     # GET /kanjis/1/edit
@@ -25,12 +27,12 @@ class KanjisController < ApplicationController
     # POST /kanjis
     def create
         @kanji = Kanji.new(kanji_params)
-        cache_lesson_id = @kanji.lesson_id
+        cache_kanji_lesson @kanji.lesson_id
         respond_to do |format|
             if @kanji.save
                 format.js {
                     @kanjis = Kanji.of_book(@kanji.lesson_id)
-                    @kanji = Kanji.new(lesson_id: cache_lesson_id)
+                    @kanji = Kanji.new(lesson_id: default_kanji_lesson)
                 }
             else
                 format.js
@@ -43,12 +45,9 @@ class KanjisController < ApplicationController
     def update
         respond_to do |format|
             if @kanji.update(kanji_params)
-                format.js {
-                    @kanjis = Kanji.of_book(@kanji.lesson_id)
-                    @kanji = Kanji.find(params[:id])
-                }
+                redirect_to kanjis_url, flash: {success:  "#Kanji {@kanji.kanji} was successfully updated."}
             else
-                format.js
+                render :edit
             end
         end
     end
@@ -61,10 +60,6 @@ class KanjisController < ApplicationController
             format.html { redirect_to kanjis_url, notice: 'Kanji was successfully destroyed.' }
             format.json { head :no_content }
         end
-    end
-
-    def sort
-        @kanjis = Kanji.of_book(params[:lesson]).includes(:lesson)
     end
 
     private
