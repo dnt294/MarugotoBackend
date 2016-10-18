@@ -1,5 +1,7 @@
 class Kanji < ApplicationRecord
 
+    mount_uploader :image, KanjiImageUploader
+
     default_scope { order('created_at').order('lesson_id')}
     scope :of_book, ->(lesson_id) { where("lesson_id = ?", lesson_id) if lesson_id.present? }
 

@@ -12,6 +12,7 @@ module MarugotoBackend
         config.assets.precompile += Ckeditor.assets
 
         config.assets.precompile += %w( ckeditor/my_config.js ckeditor/	my_contents.css ckeditor/filebrowser/*)
+        config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
         #config.autoload_paths += %W( #{config.root}/app/models/ckeditor )
 

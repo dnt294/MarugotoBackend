@@ -10,6 +10,7 @@
         <%= f.input :stroke_count %>
     </div>
     <%= f.input :hint %>
+    <%= f.input :image, as: :image_preview, input_html: {preview_version: :thumb} %>
     <%= f.input :radical, wrapper: :ui_checkbox %>
     <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.kanji_books %>
     <%= f.button :submit %>
