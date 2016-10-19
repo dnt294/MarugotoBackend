@@ -2,9 +2,9 @@
     <table class="ui celled padded unstackable structured table">
         <thead>
             <tr>
-                <th class="two wide center aligned">Lesson</th>
+                <th class="one wide center aligned">Lesson</th>
                 <th class="six wide center aligned">Title</th>
-                <th class="six wide center aligned">Explanation</th>
+                <th class="seven wide center aligned">Explanation</th>
                 <% if user_signed_in? %>
                     <th colspan="2" class="two wide center aligned"></th>
                 <% end %>
@@ -15,15 +15,15 @@
                 <% lesson.grammars.each do |grammar| %>
                     <tr>
                         <% if grammar == lesson.grammars.first %>
-                            <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_label %></td>
+                            <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_short_label %></td>
                         <% end %>
                         <td>
-                            <div class="ui header">
+                            <div class="bigger-font">
                                 <%= link_to simple_format(grammar.title), grammar %>
                             </div>
                         </td>
                         <td>
-                            <div class="ui header">
+                            <div class="bigger-font">
                                 <%= grammar.explanation %>
                             </div>
                         </td>

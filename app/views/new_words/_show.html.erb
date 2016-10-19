@@ -18,19 +18,19 @@
     <div class="ui internally celled grid">
         <div class="row">
             <div class="eight wide column">
-                <div class="ui huge red header"><%= @new_word.word %></div>
+                <div class="ui red biggest-font"><%= @new_word.word %></div>
             </div>
             <% if @new_word.kanji_version.present? %>
                 <div class="eight wide column">
-                    <div class="ui huge blue header"><%= @new_word.kanji_version %></div>
+                    <div class="biggest-font"><%= @new_word.kanji_version %></div>
                 </div>
             <% end %>
         </div>
         <div class="row">
             <div class="sixteen wide column">
-                <h2>
+                <div class="bigger-font">
                     <%= simple_format @new_word.meaning %>
-                </h2>
+                </div>
             </div>
         </div>
     </div>

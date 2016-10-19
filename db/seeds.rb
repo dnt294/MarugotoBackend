@@ -30,7 +30,4 @@ when 'development'
         Kanji.create(kanji: kanji, meaning: 'dummy', stroke_count: 1, lesson: Lesson.kanji_books.first)
         Kanji.create(kanji: kanji, meaning: 'dummy', stroke_count: 1, lesson: Lesson.kanji_books.second)
     end
-    (1..25).each do |new_word|
-        NewWord.create(word: "word #{new_word}", word_type: NewWord.types.sample, meaning: 'dummy', lesson: Lesson.marugoto_books.sample)
-    end
 end

@@ -14,17 +14,17 @@
                     <%= new_word.lesson.select_short_label %>
                 </td>
                 <td class="center aligned">
-                    <div class="ui red header">
+                    <div class="bigger-font">
                         <%= link_to new_word.word, new_word, remote: true %>
                     </div>
                 </td>
                 <td>
-                    <div class="ui red header">
+                    <div class="bigger-font">
                         <%= new_word.kanji_version %>
                     </div>
                 </td>
                 <td>
-                    <div class="ui header">
+                    <div class="bigger-font">
                         <%= simple_format new_word.meaning %>
                     </div>
                 </td>

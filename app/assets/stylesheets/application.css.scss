@@ -21,10 +21,18 @@
 @import "bootstrap/grid";
 
 
-body {
-	background-color: #F2F2F2;
-	background: url('bg.png');
+body {	
 	font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif !important ;
+}
+
+.bigger-font {
+	font-size: 22px;
+}
+.biggest-font {
+	font-size: 35px;
+}
+.ui.red {
+	color: red;
 }
 
 div.hidden {
@@ -39,6 +47,16 @@ div.hidden {
 	padding-top: 55px;
 	padding-bottom: 20px;
 }
+
+.padding-2-size {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.main-header {
+	background-color: #EDEDED !important;
+}
+
 .message.closable {
 	margin-left: 20%;
   	margin-right: 20%;

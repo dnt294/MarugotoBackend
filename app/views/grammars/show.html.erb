@@ -1,34 +1,40 @@
-<div class="ui container">
-    <p>
-        <strong>Lesson:</strong>
-        <%= @grammar.lesson.select_label %>
-    </p>
-    <div class="ui divider"></div>
-    <div class="ui huge red header">
-        <%= simple_format @grammar.title %>
-    </div>
-    <h2>
-        <%= @grammar.explanation %>
-    </h2>
-    <% if @grammar.note.presence %>
-        <div class="ui segment">
-            <%= @grammar.note.html_safe %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="ui biggest-font red">
+                <%= simple_format @grammar.title %>
+            </div>
+            <h2 class="ui biggest-font">
+                <%= @grammar.explanation %>
+            </h2>
+            <div class="ui horizontal divider">
+                <p>
+                    <strong>Lesson:</strong>
+                    <%= @grammar.lesson.select_label %>
+                </p>
+            </div>
+            <% if @grammar.note.presence %>
+                <div class="ui segment">
+                    <%= @grammar.note.html_safe %>
+                </div>
+            <% end %>
         </div>
-    <% end %>
-    <% if @grammar.examples.any? %>
-        <div class="ui horizontal divider">
-            Ví dụ
+        <div class="col-md-4">
+            <% if user_signed_in? %>
+                <div class="ui buttons">
+                    <%= link_to 'Edit', edit_grammar_path(@grammar), class: 'ui positive button' %>
+                    <div class="or"></div>
+                    <%= link_to 'Back', grammars_path, class: 'ui button' %>
+                </div>
+            <% end %>
+            <% if @grammar.examples.any? %>
+                <div class="ui horizontal divider">
+                    Ví dụ
     </div>
-        <% @grammar.examples.each do |example| %>
-            <%= render partial: 'examples_list', locals: { example: example } %>
-        <% end %>
-    <% end %>
-    <% if user_signed_in? %>
-        <div class="ui divider"></div>
-        <div class="ui buttons">
-            <%= link_to 'Edit', edit_grammar_path(@grammar), class: 'ui positive button' %>
-            <div class="or"></div>
-            <%= link_to 'Back', grammars_path, class: 'ui button' %>
+                <% @grammar.examples.each do |example| %>
+                    <%= render partial: 'examples_list', locals: { example: example } %>
+                <% end %>
+            <% end %>
         </div>
-    <% end %>
+    </div>
 </div>
