@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927155828) do
+ActiveRecord::Schema.define(version: 20161019031336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 20160927155828) do
     t.integer  "grammars_count",  default: 0, null: false
     t.integer  "kanjis_count",    default: 0, null: false
     t.integer  "new_words_count", default: 0, null: false
+    t.integer  "lesson_order"
+    t.index ["lesson_order"], name: "index_lessons_on_lesson_order", using: :btree
   end
 
   create_table "new_words", force: :cascade do |t|

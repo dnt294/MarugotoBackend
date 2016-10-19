@@ -6,8 +6,10 @@ class GrammarsController < ApplicationController
 
     # GET /grammars
     def index
-        #@grammars = Grammar.all.includes(:lesson)
-        @lessons_with_grammar = Lesson.marugoto_books.with_grammars.includes(:grammars)
+        #@grammars = Grammar.all.includes(:lesson).sort_by{ |g| g.lesson.lesson_order }.group_by(&:lesson_id)
+        @grammars = Grammar.all.includes(:lesson).order('Lessons.lesson_order').group_by(&:lesson_id)
+
+        # ^ same results, the second is a little bit faster !
     end
 
     # GET /grammars/1

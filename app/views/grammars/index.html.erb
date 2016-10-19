@@ -11,11 +11,11 @@
             </tr>
         </thead>
         <tbody>
-            <% @lessons_with_grammar.each do |lesson| %>
-                <% lesson.grammars.each do |grammar| %>
+            <% @grammars.each do |lesson_id, grammars| %>
+                <% grammars.each do |grammar| %>
                     <tr>
-                        <% if grammar == lesson.grammars.first %>
-                            <td rowspan="<%= lesson.grammars_count %>"><%= lesson.select_short_label %></td>
+                        <% if grammar == grammars.first %>
+                            <td rowspan="<%= grammars.count %>"><%= grammar.lesson.select_short_label %></td>
                         <% end %>
                         <td>
                             <div class="bigger-font">
