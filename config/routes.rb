@@ -29,7 +29,12 @@ Rails.application.routes.draw do
     resources :kanjis do
         collection do
             get 'sort'
+            get 'search_by_entry_number'
+        end
+        member do
+            get :components, :references
         end
     end
 
+    resources :kanji_components
 end

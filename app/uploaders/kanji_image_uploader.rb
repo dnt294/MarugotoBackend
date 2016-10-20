@@ -7,7 +7,7 @@ class KanjiImageUploader < CarrierWave::Uploader::Base
     # Override the directory where uploaded files will be stored.
     # This is a sensible default for uploaders that are meant to be mounted:
     def public_id
-        return "marugoto/kanji/" + Cloudinary::Utils.random_public_id
+        return "marugoto/kanji/" + model.id.to_s
     end
     process :tags => ['marugoto-kanji']
 

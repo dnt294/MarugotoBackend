@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019031336) do
+ActiveRecord::Schema.define(version: 20161020054223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 20161019031336) do
     t.index ["lesson_id"], name: "index_grammars_on_lesson_id", using: :btree
   end
 
-  create_table "kanji_radicals", force: :cascade do |t|
-    t.integer  "radical_id"
-    t.integer  "surbodinate_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+  create_table "kanji_components", force: :cascade do |t|
+    t.integer  "component_id"
+    t.integer  "reference_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "kanjis", force: :cascade do |t|
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161019031336) do
     t.integer  "lesson_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "entry_number"
     t.index ["lesson_id"], name: "index_kanjis_on_lesson_id", using: :btree
   end
 

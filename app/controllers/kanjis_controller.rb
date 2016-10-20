@@ -1,7 +1,7 @@
 class KanjisController < ApplicationController
     include ApplicationHelper
 
-    before_action :set_kanji, only: [:show, :edit, :update, :destroy]
+    before_action :set_kanji, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /kanjis
@@ -13,6 +13,7 @@ class KanjisController < ApplicationController
 
     # GET /kanjis/1
     def show
+        @kanji = Kanji.includes(:examples).find(params[:id])
     end
 
     # GET /kanjis/new
@@ -28,27 +29,20 @@ class KanjisController < ApplicationController
     def create
         @kanji = Kanji.new(kanji_params)
         cache_kanji_lesson @kanji.lesson_id
-        respond_to do |format|
-            if @kanji.save
-                format.js {
-                    @kanjis = Kanji.of_book(@kanji.lesson_id)
-                    @kanji = Kanji.new(lesson_id: default_kanji_lesson)
-                }
-            else
-                format.js
-            end
+        if @kanji.save
+            redirect_to @kanji, flash: {success: 'Grammar was successfully created.'}
+        else
+            render :new
         end
     end
 
     # PATCH/PUT /kanjis/1
     # PATCH/PUT /kanjis/1.json
     def update
-        respond_to do |format|
-            if @kanji.update(kanji_params)
-                redirect_to kanjis_url, flash: {success:  "#Kanji {@kanji.kanji} was successfully updated."}
-            else
-                render :edit
-            end
+        if @kanji.update(kanji_params)
+            redirect_to @kanji, flash: {success:  "#Kanji {@kanji.kanji} was successfully updated."}
+        else
+            render :edit
         end
     end
 
@@ -62,6 +56,14 @@ class KanjisController < ApplicationController
         end
     end
 
+    def search_by_entry_number
+        respond_to do |format|
+            format.js {
+                @result = Kanji.find_by(entry_number: params[:id]) || nil
+            }
+        end
+    end
+
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_kanji
@@ -70,6 +72,6 @@ class KanjisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kanji_params
-        params.require(:kanji).permit(:kanji, :meaning, :onyomi, :kunyomi, :stroke_count, :hint, :image, :radical, :lesson_id, examples_attributes: [:id, :_destroy, :sentences, :kanji_version, :meaning, :note])
+        params.require(:kanji).permit(:kanji, :entry_number, :meaning, :onyomi, :kunyomi, :stroke_count, :hint, :image, :radical, :lesson_id, examples_attributes: [:id, :_destroy, :sentences, :kanji_version, :meaning, :note])
     end
 end

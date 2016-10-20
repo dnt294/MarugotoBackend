@@ -1,0 +1,10 @@
+<div class="ui green segment nested-fields">
+    <div class="fields">
+        <%= f.input :sentences %>
+        <%= f.input :kanji_version %>
+        <%= f.input :meaning %>
+        <%= link_to_remove_association f, class: 'ui icon button' do %>
+            <i class="delete icon"></i>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<% if @result.nil? %>
+    $('#preview-kanji').empty().append("<%=  j params[:id]  %> Not found!")
+    $('.input-component-id').value = null
+<% else %>
+    $('.input-component-id').val(1)    
+    $('#preview-kanji').empty().append("<%= j @result.kanji %> found!")    
+    $('.input-component-id').val(<%= j @result.id.to_s %>)
+<% end %>

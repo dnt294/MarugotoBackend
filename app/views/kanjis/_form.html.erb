@@ -1,17 +1,43 @@
-<h2 class="ui red header">Create new Kanji</h2>
-<%= simple_form_for kanji, remote: true do |f| %>
-    <div class="error_section">
+<div class="padding-2-size">
+    <h2 class="ui red header">Create new Kanji</h2>
+    <%= simple_form_for kanji do |f| %>
+        <div class="error_section">
+        </div>
+        <div class=" fluid-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="fields">
+                        <%= f.input :entry_number %>
+                        <%= f.input :kanji %>
+                        <%= f.input :meaning, label: 'Nghĩa' %>
+                    </div>
+                    <div class="fields">
+                        <%= f.input :onyomi %>
+                        <%= f.input :kunyomi %>
+                        <%= f.input :stroke_count %>
+                    </div>
+                    <div class="two fields">
+                        <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.kanji_books %>
+                        <%= f.input :radical, wrapper: :ui_checkbox %>
+                    </div>
+                    <%= f.input :hint %>
+                    <%= f.input :image, input_html: { onchange: 'show_preview(this)' } %>
+                </div>
+                <div class="col-md-6">
+                    <%= cl_image_tag @kanji.image, class: 'image-hint' %>
+                    <div class="ui horizontal divider">
+                        <p>Ví dụ</p>
+                    </div>
+                    <div class="examples">
+                        <%= f.simple_fields_for :examples do |example| %>
+                            <%= render 'example_fields', f: example %>
+                        <% end %>
+                        <%= link_to_add_association 'Thêm ví dụ', f, :examples, class: 'ui green button' %>
+                    </div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <%= f.button :submit %>
+        <% end %>
     </div>
-    <%= f.input :kanji %>
-    <%= f.input :meaning, label: 'Nghĩa' %>
-    <div class="fields">
-        <%= f.input :onyomi %>
-        <%= f.input :kunyomi %>
-        <%= f.input :stroke_count %>
-    </div>
-    <%= f.input :hint %>
-    <%= f.input :image, as: :image_preview, input_html: {preview_version: :thumb} %>
-    <%= f.input :radical, wrapper: :ui_checkbox %>
-    <%= f.association  :lesson, label_method: :select_label, value_method: :id, collection: Lesson.kanji_books %>
-    <%= f.button :submit %>
-<% end %>
+</div>

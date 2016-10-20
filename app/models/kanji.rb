@@ -8,18 +8,24 @@ class Kanji < ApplicationRecord
 
     belongs_to :lesson
     counter_culture :lesson
+
     has_many :examples, as: :examplable
 
-    #####     Define radical relationship ######
+    accepts_nested_attributes_for :examples, allow_destroy: true
 
-    has_many :radical_relationship, foreign_key: :surbodinate_id, class_name: 'KanjiRadical'
-    has_many :surbodinate_relationship, foreign_key: :radical_id, class_name: 'KanjiRadical'
+    #####     Define component-refenrence relationship ######
 
-    has_many :radicals, through: :radical_relationship, source: :radical
-    has_many :surbodinates, through: :surbodinate_relationship, source: :surbodinate
+    has_many :component_relationships, foreign_key: :reference_id, class_name: 'KanjiComponent', dependent: :destroy
+    has_many :reference_relationships, foreign_key: :component_id, class_name: 'KanjiComponent', dependent: :destroy
 
+    has_many :components, through: :component_relationships, source: :component
+    has_many :references, through: :reference_relationships, source: :reference
+
+    accepts_nested_attributes_for :component_relationships, allow_destroy: true
+    accepts_nested_attributes_for :reference_relationships, allow_destroy: true
     ############################################
 
-    validates :kanji, :meaning, presence: true
+    validates :kanji, :meaning, :entry_number, presence: true
+
     validates :radical, inclusion: { in: [true, false] }
 end

@@ -1,0 +1,100 @@
+<div class="padding-2-size fluid-container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="ui segment">
+                <div class="ui red icon-font center aligned grid">
+                    <p><%= @kanji.kanji %></p>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div class="bigger-font padding-vertical">
+                <p><%= @kanji.hint %></p>
+            </div>
+            <%= cl_image_tag @kanji.image, class: 'image-hint' %>
+        </div>
+        <div class="col-md-4">
+            <a class="ui red tag large label">
+                Bài <%= @kanji.lesson.lesson %>
+            </a>
+            <a class="ui green tag large label">
+                Số nét: <%= @kanji.stroke_count %>
+            </a>
+            <% if @kanji.radical %>
+                <a class="ui yellow tag large label">Bộ thủ</a>
+            <% end %>
+            <div class="ui divider"></div>
+            <div class="ui red biggest-font">
+                <p><%= @kanji.meaning %></p>
+            </div>
+            <div class="ui internally celled grid">
+                <div class="row">
+                    <div class="eight wide column">
+                        <p>Onyomi</p>
+                    </div>
+                    <div class="eight wide column">
+                        <p>Kunyomi</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="eight wide column">
+                        <div class="ui red bigger-font">
+                            <%= @kanji.onyomi %>
+                        </div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui red bigger-font">
+                            <%= @kanji.kunyomi %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if @kanji.examples.any? %>
+                <div class="ui horizontal divider">Ví dụ</div>
+                <div class="ui divided items">
+                    <%= render @kanji.examples, partial: 'examples/exmaple_of_kanji' %>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-md-4">
+            <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_kanji_path(@kanji), class: 'ui primary button' %>
+                <%= link_to 'Delete', @kanji, method: :delete, class: 'ui negative basic button', data: {confirm: 'Are you sure ?'}%>
+            <% end %>
+            <div class="ui horizontal divider">Component</div>
+            <table class="ui celled table">
+                <% @kanji.components.each do |component| %>
+                    <tr>
+                        <td class="center aligned">
+                            <div class="biggest-font">
+                                <%= component.kanji %>
+                            </div>
+                        </td>
+                        <td class="center aligned">
+                            <div class="bigger-font">
+                                <%= component.meaning %>
+                            </div>
+                        </td>
+                        <td class="one wide right aligned">
+                            <%= form_for(@kanji.component_relationships.find_by(component_id: component.id), html: {method: :delete}) do |f| %>
+                                <%= f.submit 'Xóa', class: 'ui button' %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </table>
+            <div class="ui horizontal divider">Add Component</div>
+            <%= form_tag search_by_entry_number_kanjis_path, method: :get, remote: :true, class: 'ui icon input' do %>
+                <%= search_field_tag 'id', nil, placeholder: 'Nhập mã kanji'%>
+                <i class="search icon"></i>
+                <%= submit_tag 'Tìm', class: 'ui button' %>
+            <% end %>
+            <div id="preview-kanji" class="bigger-font padding-vertical">
+            </div>
+            <%= simple_form_for @kanji.component_relationships.build do |f| %>
+                <%= f.input :reference_id, as: :hidden, value: @kanji.id %>
+                <%= f.input :component_id, as: :hidden, input_html: { class: 'input-component-id' } %>
+                <%= f.submit 'Add', class: 'ui green button' %>
+            <% end %>
+        </div>
+    </div>
+</div>
