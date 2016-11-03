@@ -7,7 +7,8 @@ class NewWordsController < ApplicationController
     # GET /new_words
     # GET /new_words.json
     def index
-        @new_words = NewWord.all.includes(:lesson).order('Lessons.lesson_order')
+        #@new_words = NewWord.all.includes(:lesson).order('Lessons.lesson_order')
+        @new_words = NewWord.includes(:lesson).where(lessons: {book: 'Kanji', lesson: 1})
     end
 
     # GET /new_words/1
