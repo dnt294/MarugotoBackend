@@ -16,5 +16,11 @@ module MarugotoBackend
 
         #config.autoload_paths += %W( #{config.root}/app/models/ckeditor )
 
+        config.browserify_rails.source_map_environments << "development"
+
+        config.browserify_rails.commandline_options =
+            "-t [ babelify --presets [ es2015 react ] ]"
+        config.browserify_rails.evaluate_node_modules = true
+
     end
 end

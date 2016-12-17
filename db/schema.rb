@@ -65,6 +65,9 @@ ActiveRecord::Schema.define(version: 20161020054223) do
     t.integer  "reference_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["component_id", "reference_id"], name: "index_kanji_components_on_component_id_and_reference_id", unique: true, using: :btree
+    t.index ["component_id"], name: "index_kanji_components_on_component_id", using: :btree
+    t.index ["reference_id"], name: "index_kanji_components_on_reference_id", using: :btree
   end
 
   create_table "kanjis", force: :cascade do |t|

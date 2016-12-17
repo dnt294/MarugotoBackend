@@ -1,5 +1,5 @@
 <div class="ui borderless menu fixed stackable main-header
-    <%= 'top fixed hidden transition following-header' if current_page?(root_url) %> 
+    <%= 'top fixed hidden transition following-header' if current_page?(root_url) %>
     ">
     <%= render 'shared/headers/main_left_header' %>
     <div class="right menu">
@@ -9,8 +9,6 @@
             <%= render 'shared/headers/header_new_word' %>
         <% elsif current_controller_is 'grammars' %>
             <%= render 'shared/headers/header_grammar' %>
-        <% elsif current_controller_is 'verbs' %>
-            <%= render 'shared/headers/header_verb' %>
         <% end %>
     </div>
 </div>

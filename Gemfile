@@ -16,6 +16,9 @@ gem 'pg_search'
 gem 'cocoon'
 gem 'devise'
 #editor gems
+gem 'react-rails'
+gem 'browserify-rails'
+
 gem 'cloudinary'
 gem 'mini_magick'
 gem 'carrierwave'

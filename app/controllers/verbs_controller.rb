@@ -1,14 +1,7 @@
 class VerbsController < ApplicationController
+
     def index
-
-        @ftvs = NewWord.ftv
-
-
-        @stvs = NewWord.stv
-
-        @ftv_count = @ftvs.length
-        @stv_count = @stvs.length
-
-        @verbs_count = @ftv_count + @stv_count
+        @verbs = NewWord.verbs.includes(:verb_form).as_json(include: :verb_form)
     end
+
 end
